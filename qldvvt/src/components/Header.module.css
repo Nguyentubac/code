@@ -1,0 +1,11 @@
+
+/* src/layout/Header.module.css */
+.headerContainer {
+    text-align: center;
+  }
+  
+  .headerTitle {
+    margin: 0;
+    padding: 0;
+  }
+  

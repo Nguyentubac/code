@@ -1,0 +1,13 @@
+/* src/layout/Logo.module.css */
+.logoContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .logoText {
+    font-weight: bold;
+  }
+  /* Giả sử file Logo.css hoặc logo.module.css */
+

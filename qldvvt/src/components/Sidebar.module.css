@@ -1,0 +1,14 @@
+/* src/layout/Sidebar.module.css */
+.sidebarContainer {
+    padding: 1rem;
+  }
+  
+  .sidebarTitle {
+    margin-top: 0;
+  }
+  
+  .sidebarMenu {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  

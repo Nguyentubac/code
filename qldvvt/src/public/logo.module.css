@@ -1,0 +1,9 @@
+
+.logo-container {
+  width: 150px;
+  height: 150px;
+  background-image: url("./anh1.png");
+  background-size: cover;   /* hoặc contain */
+  background-position: center;
+  background-repeat: no-repeat;
+}

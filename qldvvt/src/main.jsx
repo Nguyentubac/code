@@ -8,3 +8,4 @@ createRoot(document.getElementById('root')).render(
     <App />
   </StrictMode>,
 )
+// index -> main.jsx-> App.jsx-> -> Header.jsx + pages.
