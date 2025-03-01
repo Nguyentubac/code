@@ -1,13 +1,29 @@
-/* src/layout/Logo.module.css */
-.logoContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-  }
-  
-  .logoText {
-    font-weight: bold;
-  }
-  /* Giả sử file Logo.css hoặc logo.module.css */
 
+
+/* src/components/Logo.module.css */
+
+.logoContainer {
+  /* Chiều rộng, cao tùy ý (VD: 120px * 80px) */
+  width: 120px;
+  height: 80px;
+
+  /* Căn giữa ảnh trong khung */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Ẩn phần thừa nếu ảnh vượt khung */
+  overflow: hidden;
+
+  /* Nếu muốn kiểm tra rõ khung logo, có thể thêm border tạm: */
+  /* border: 1px solid #ccc; */
+}
+
+.logoImage {
+  /* Ảnh sẽ chiếm full chiều ngang khung, tự co chiều cao */
+  width: 100%;
+  height: auto;
+
+  /* Cắt ảnh lấp đầy khung; nếu muốn xem toàn bộ ảnh, dùng contain */
+  object-fit: cover; 
+}
