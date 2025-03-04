@@ -1,40 +1,25 @@
-import styles from './Sidebar.module.css';
-// Ví dụ dùng Font Awesome, bạn import link này trong <head> (public/index.html hoặc Layout)
-import 'font-awesome/css/font-awesome.min.css';
+import React from "react";
+import styles from "./Sidebar.module.css"; // Sử dụng CSS Modules
 
-function Sidebar() {
+const Sidebar = ({ setActivePage }) => {
   return (
     <div className={styles.sidebarContainer}>
-      {/* Menu dọc (icon + text) */}
-      <ul className={styles.navMenu}>
-        <li className={`${styles.navItem} ${styles.active}`}>
-          <i className="fa fa-folder" aria-hidden="true"></i>
-          <span>Employee Files</span>
+      <ul>
+        <li className={`${styles.navItem} ${styles.active}`} onClick={() => setActivePage("DriverInfoPage")}>
+        <i className="fa fa-money" aria-hidden="true"></i>
+          <span> Driver Information</span>
         </li>
-        <li className={styles.navItem}>
+        <li className={`${styles.navItem} ${styles.active}`} onClick={() => setActivePage(1)}>
+          <i className="fa fa-money" aria-hidden="true"></i>
+          <span> Payroll</span>
+        </li>
+        <li className={`${styles.navItem} ${styles.active}`} onClick={() => setActivePage(2)}>
           <i className="fa fa-file-text" aria-hidden="true"></i>
-          <span>Reports</span>
+          <span> Reports</span>
         </li>
-        <li className={styles.navItem}>
-          <i className="fa fa-dollar" aria-hidden="true"></i>
-          <span>Payroll</span>
-        </li>
-        <li className={styles.navItem}>
-          <i className="fa fa-file-invoice-dollar" aria-hidden="true"></i>
-          <span>Invoices</span>
-        </li>
-        <li className={styles.navItem}>
-          <i className="fa fa-cog" aria-hidden="true"></i>
-          <span>Settings</span>
-        </li>
-        <li className={styles.navItem}>
-          <i className="fa fa-file" aria-hidden="true"></i>
-          <span>Documents</span>
-        </li>
-        {/* ... Thêm các mục khác tuỳ ý ... */}
       </ul>
     </div>
   );
-}
+};
 
 export default Sidebar;

@@ -15,7 +15,7 @@
 
 /* Wrapper có thanh cuộn */
 .table-wrapper {
-  max-height: 400px;
+  max-height: 500px;
   overflow-y: auto;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -56,7 +56,7 @@
 .data-table td {
   border: 1px solid #ddd;
   padding: 12px;
-  text-align: left;
+  text-align: center;
   color: #333;
   min-width: 120px;
   position: relative;
