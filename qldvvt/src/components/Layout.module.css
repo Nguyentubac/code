@@ -1,6 +1,6 @@
 .gridContainer {
   width: 100vw;
-  height: 100vh;
+  height: auto;
   display: grid;
   grid-template-columns: 200px 1fr;
   /* 2 cột, 2 hàng */

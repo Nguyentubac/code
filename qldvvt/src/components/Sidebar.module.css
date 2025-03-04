@@ -5,7 +5,7 @@
 .sidebarContainer {
   width: 180px;          /* Độ rộng sidebar */
   background-color: #2F3B43; /* Nền tối cho phần menu dọc */
-  min-height: 100vh;     /* Chiều cao full màn hình */
+  min-height: auto;     /* Chiều cao full màn hình */
   display: flex;
   flex-direction: column;
   color: #eee;           /* Màu chữ trắng nhạt */
