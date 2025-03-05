@@ -1,0 +1,15 @@
+.contentContainer {
+    flex: 1;
+    padding: 0px;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+    overflow-y: auto;
+  }
+  
+  .placeholder {
+    text-align: center;
+    font-size: 18px;
+    color: #888;
+    margin-top: 50px;
+  }
+  
