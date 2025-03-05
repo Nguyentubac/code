@@ -5,13 +5,12 @@ import Content from "./components/Content/Content";
 import styles from "./App.module.css";
 
 const App = () => {
-  const [selectedItem, setSelectedItem] = useState("notification-management");
+  const [selectedItem] = useState("notification-management");
 
   return (
     <div className={styles.appContainer}>
       <Header />
       <div className={styles.mainContainer}>
-        <SideBar setSelectedItem={setSelectedItem} />
         <Content selectedItem={selectedItem} />
       </div>
     </div>
@@ -19,3 +18,4 @@ const App = () => {
 };
 
 export default App;
+

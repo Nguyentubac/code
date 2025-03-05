@@ -1,9 +1,9 @@
 .contentContainer {
-    flex: 1;
-    padding: 0px;
+    padding: px;
     background-color: #f5f5f5;
     min-height: 100vh;
     overflow-y: auto;
+    display: flex;
   }
   
   .placeholder {

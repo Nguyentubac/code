@@ -12,8 +12,8 @@ import SideBar from "./SideBar/SideBar";
 import styles from "./Content.module.css";
 
 const Content = () => {
-  const [selectedItem, setSelectedItem] = useState(0);
-
+  const [selectedItem, setSelectedItem] = useState('vehicle-management');
+  console.log("Rendering Content for:", selectedItem);
   const renderContent = () => {
     switch (selectedItem) {
       case "vehicle-management":
@@ -37,9 +37,10 @@ const Content = () => {
 
   return (
     <div className={styles.layout}>
+      
+      <div className={styles.contentContainer}>
       <SideBar setSelectedItem={setSelectedItem} />
-      <div className={styles.contentContainer}>{renderContent()}</div>
-
+      {renderContent()}</div>
     </div>
   );
 };
