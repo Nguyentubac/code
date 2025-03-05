@@ -4,6 +4,7 @@
     min-height: 100vh;
     overflow-y: auto;
     display: flex;
+    
   }
   
   .placeholder {
@@ -13,3 +14,11 @@
     margin-top: 50px;
   }
   
+  .divContent{
+    width: 100%;
+    border-top-left-radius:20px ;
+    background: #d9ecff;
+    padding-left: 20px;
+    margin-left: 10px;
+    margin-top: 15px;
+  }

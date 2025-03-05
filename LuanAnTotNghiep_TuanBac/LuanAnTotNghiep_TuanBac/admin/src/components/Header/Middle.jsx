@@ -4,7 +4,7 @@ import styles from "./Middle.module.css";
 const Middle = () => {
   return (
     <nav className={styles.nav}>
-      <a href="#" className={styles.navItem}>Dashboard</a>
+      {/* <a href="#" className={styles.navItem}>Dashboard</a> */}
     </nav>
   );
 };

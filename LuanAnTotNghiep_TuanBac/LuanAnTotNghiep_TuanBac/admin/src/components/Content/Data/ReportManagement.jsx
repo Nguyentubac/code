@@ -1,5 +1,5 @@
 const EvaluationManagement = () => {
-    return <div>Evaluation Management Content</div>;
+    return <div>Report Management Content</div>;
   };
   
   export default EvaluationManagement;

@@ -4,7 +4,7 @@ import TripManagement from "./Data/TripManagement";
 import UserManagement from "./Data/UserManagement";
 import VehicleManagement from "./Data/VehicleManagement";
 import EmployeeManagement from "./Data/EmployeeManagement";
-import EvaluationManagement from "./Data/EvaluationManagement";
+import EvaluationManagement from "./Data/ReportManagement";
 import NotificationManagement from "./Data/NotificationManagement";
 import PromotionManagement from "./Data/PromotionManagement";
 
@@ -39,8 +39,9 @@ const Content = () => {
     <div className={styles.layout}>
       
       <div className={styles.contentContainer}>
-      <SideBar setSelectedItem={setSelectedItem} />
-      {renderContent()}</div>
+        <div><SideBar setSelectedItem={setSelectedItem} /></div>
+        <div className={styles.divContent}>{renderContent()}</div>
+      </div>
     </div>
   );
 };

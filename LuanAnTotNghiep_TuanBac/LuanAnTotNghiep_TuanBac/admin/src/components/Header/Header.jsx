@@ -7,7 +7,7 @@ import UserAction from "./UserAction";
 const Header = () => {
   return (
     <header className={styles.header}>
-      <Logo />
+      <a href="http://localhost:5173/"><Logo /></a>
       <Middle />
       <UserAction />
     </header>
