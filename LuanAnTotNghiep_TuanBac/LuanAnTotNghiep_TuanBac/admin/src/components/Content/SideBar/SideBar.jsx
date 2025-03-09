@@ -17,43 +17,49 @@ const SideBar = ({ setSelectedItem }) => {
           className={`${styles.menuItem} ${activeItem === "vehicle-management" ? styles.active : ""}`}
           onClick={() => handleItemClick("vehicle-management")}
         >
-          🚗 Vehicle Management
+          Vehicle Management
         </li>
         <li
           className={`${styles.menuItem} ${activeItem === "employee-management" ? styles.active : ""}`}
           onClick={() => handleItemClick("employee-management")}
         >
-          👥 Employee Management
+          Employee Management
         </li>
         <li
           className={`${styles.menuItem} ${activeItem === "user-management" ? styles.active : ""}`}
           onClick={() => handleItemClick("user-management")}
         >
-          👤 User Management
+          User Management
         </li>
         <li
           className={`${styles.menuItem} ${activeItem === "trip-management" ? styles.active : ""}`}
           onClick={() => handleItemClick("trip-management")}
         >
-          🚌 Trip Management
+          Trip Management
         </li>
         <li
           className={`${styles.menuItem} ${activeItem === "promotion-management" ? styles.active : ""}`}
           onClick={() => handleItemClick("promotion-management")}
         >
-          🎉 Promotion Management
+          Promotion Management
         </li>
         <li
           className={`${styles.menuItem} ${activeItem === "notification-management" ? styles.active : ""}`}
           onClick={() => handleItemClick("notification-management")}
         >
-          🔔 Notification Management
+          Notification Management
         </li>
         <li
           className={`${styles.menuItem} ${activeItem === "report-management" ? styles.active : ""}`}
-          onClick={() => handleItemClick("evaluation-management")}
+          onClick={() => handleItemClick("report-management")}
         >
-          ⭐ Report Management
+          Report Management
+        </li>
+        <li
+          className={`${styles.menuItem} ${activeItem === "payment-management" ? styles.active : ""}`}
+          onClick={() => handleItemClick("payment-management")}
+        >
+          Payment Managerment
         </li>
       </ul>
     </aside>

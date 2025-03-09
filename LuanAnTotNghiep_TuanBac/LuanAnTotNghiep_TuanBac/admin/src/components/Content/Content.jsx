@@ -10,6 +10,8 @@ import PromotionManagement from "./Data/PromotionManagement";
 
 import SideBar from "./SideBar/SideBar";
 import styles from "./Content.module.css";
+import PaymentManagerment from "./Data/PaymentManagerment";
+import ReportManagement from "./Data/ReportManagement";
 
 const Content = () => {
   const [selectedItem, setSelectedItem] = useState('vehicle-management');
@@ -20,6 +22,8 @@ const Content = () => {
         return <VehicleManagement />;
       case "employee":
         return <EmployeeManagement />;
+      case "report-management":
+        return <ReportManagement/>;
       case "user-management":
         return <UserManagement />;
       case "trip-management":
@@ -30,6 +34,8 @@ const Content = () => {
         return <NotificationManagement />;
       case "evaluation-management":
         return <EvaluationManagement />;
+      case "payment-management":
+        return <PaymentManagerment/>;
       default:
         return <div className={styles.placeholder}>Select a section from the sidebar.</div>;
     }
