@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 
-import TripManagement from "./Data/TripManagement";
-import UserManagement from "./Data/UserManagement";
-import VehicleManagement from "./Data/VehicleManagement";
-import EmployeeManagement from "./Data/EmployeeManagement";
-import EvaluationManagement from "./Data/ReportManagement";
-import NotificationManagement from "./Data/NotificationManagement";
-import PromotionManagement from "./Data/PromotionManagement";
+import TripManagement from "./Data/TripManagement/TripManagement";
+import UserManagement from "./Data/UserManagerment/UserManagement";
+import VehicleManagement from "./Data/VehicleManagerment/VehicleManagement";
+import EmployeeManagement from "./Data/EmployeeManagerment/EmployeeManagement";
+import NotificationManagement from "./Data/NotificationManagerment/NotificationManagement";
+import PromotionManagement from "./Data/PromotionManagerment/PromotionManagement";
 
 import SideBar from "./SideBar/SideBar";
 import styles from "./Content.module.css";
-import PaymentManagerment from "./Data/PaymentManagerment";
-import ReportManagement from "./Data/ReportManagement";
+import PaymentManagerment from "./Data/PaymentManagerment/PaymentManagerment";
+import ReportManagement from "./Data/ReportManagerment/ReportManagement";
 
 const Content = () => {
   const [selectedItem, setSelectedItem] = useState('vehicle-management');
@@ -32,8 +31,6 @@ const Content = () => {
         return <PromotionManagement />;
       case "notification-management":
         return <NotificationManagement />;
-      case "evaluation-management":
-        return <EvaluationManagement />;
       case "payment-management":
         return <PaymentManagerment/>;
       default:
@@ -42,13 +39,10 @@ const Content = () => {
   };
 
   return (
-    <div className={styles.layout}>
-      
       <div className={styles.contentContainer}>
         <div><SideBar setSelectedItem={setSelectedItem} /></div>
         <div className={styles.divContent}>{renderContent()}</div>
       </div>
-    </div>
   );
 };
 
