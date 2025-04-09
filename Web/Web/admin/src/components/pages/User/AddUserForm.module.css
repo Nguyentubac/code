@@ -1,0 +1,78 @@
+/* 🌟 Container Form */
+.formContainer {
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  width: 100%;
+}
+
+/* Vùng input cuộn được */
+.scrollableForm {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 8px;
+  margin-bottom: 1rem;
+}
+  
+  /* 📌 Ô nhập */
+  input, select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  /* 📌 Nút Gửi Form */
+  .submitBtn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+  }
+  
+  .submitBtn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* ❌ Nút Hủy */
+  .cancelBtn {
+    background-color: red;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+  }
+  
+  .cancelBtn:hover {
+    background-color: darkred;
+  }
+  
+  /* 📌 Nhóm nút */
+  .buttonGroup {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+  }
+  .checkboxLabel {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px; /* dùng gap thay vì margin-right */
+    font-size: 16px;
+    margin: 10px 0;
+    cursor: pointer;
+    user-select: none;
+  }
+  .checkboxLabel input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #007bff; /* màu xanh dương cho checkbox nếu trình duyệt hỗ trợ */
+  }

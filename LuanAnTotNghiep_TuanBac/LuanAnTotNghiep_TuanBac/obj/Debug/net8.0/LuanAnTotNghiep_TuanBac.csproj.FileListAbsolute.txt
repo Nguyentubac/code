@@ -1,8 +1,0 @@
-D:\code\LuanAnTotNghiep_TuanBac\LuanAnTotNghiep_TuanBac\obj\Debug\net8.0\LuanAnTotNghiep_TuanBac.csproj.AssemblyReference.cache
-D:\code\LuanAnTotNghiep_TuanBac\LuanAnTotNghiep_TuanBac\obj\Debug\net8.0\LuanAnTotNghiep_TuanBac.GeneratedMSBuildEditorConfig.editorconfig
-D:\code\LuanAnTotNghiep_TuanBac\LuanAnTotNghiep_TuanBac\obj\Debug\net8.0\LuanAnTotNghiep_TuanBac.AssemblyInfoInputs.cache
-D:\code\LuanAnTotNghiep_TuanBac\LuanAnTotNghiep_TuanBac\obj\Debug\net8.0\LuanAnTotNghiep_TuanBac.AssemblyInfo.cs
-D:\code\LuanAnTotNghiep_TuanBac\LuanAnTotNghiep_TuanBac\obj\Debug\net8.0\LuanAnTotNghiep_TuanBac.csproj.CoreCompileInputs.cache
-D:\code\LuanAnTotNghiep_TuanBac\LuanAnTotNghiep_TuanBac\obj\Debug\net8.0\LuanAnTotNghiep_TuanBac.MvcApplicationPartsAssemblyInfo.cs
-D:\code\LuanAnTotNghiep_TuanBac\LuanAnTotNghiep_TuanBac\obj\Debug\net8.0\LuanAnTotNghiep_TuanBac.MvcApplicationPartsAssemblyInfo.cache
-D:\code\LuanAnTotNghiep_TuanBac\LuanAnTotNghiep_TuanBac\obj\Debug\net8.0\LuanAnTotNghiep_TuanBac.sourcelink.json

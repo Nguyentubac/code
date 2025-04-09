@@ -1,0 +1,87 @@
+/* 🌟 Container chính */
+.userManagement {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 📌 Tiêu đề */
+h2 {
+    text-align: left;
+    margin-bottom: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #343a40;
+}
+
+/* 🔎 Ô tìm kiếm */
+.searchInput {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+}
+
+/* 📊 Cho phép kéo ngang bảng */
+.tableContainer {
+    overflow-x: auto; /* 👈 Cho phép cuộn ngang */
+    max-width: 100%;
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    white-space: nowrap; /* 👈 Ngăn nội dung xuống dòng */
+}
+
+/* 📋 Bảng */
+.excelTable {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+/* 📌 Tiêu đề bảng */
+.excelTable th {
+    color: #343a40;
+    padding: 10px;
+    text-align: left;
+    font-weight: bold;
+    font-size: 14px;
+    border-bottom: 2px solid #ddd;
+    white-space: nowrap; /* 👈 Ngăn chặn chữ bị xuống dòng */
+}
+
+/* 📌 Dữ liệu bảng */
+.excelTable td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    white-space: nowrap; /* 👈 Đảm bảo chữ không xuống dòng */
+}
+
+/* 🌟 Hiệu ứng Hover */
+.excelTable tr:hover {
+    background-color: #f1f3f5;
+}
+
+/* ✅ Hiển thị dòng được chọn */
+.selectedRow {
+    background-color: #d1e7ff !important;
+}
+
+/* 📌 Responsive Table */
+@media (max-width: 768px) {
+    .tableContainer {
+        overflow-x: auto;
+    }
+
+    .excelTable th,
+    .excelTable td {
+        font-size: 14px;
+        padding: 8px;
+    }
+}

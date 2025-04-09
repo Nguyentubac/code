@@ -1,0 +1,58 @@
+.actionContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #ffffff;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .actionButtons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .actionBtn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    min-width: 160px;
+    justify-content: center;
+  }
+  
+  .addUserBtn {
+    background-color: #007bff;
+  }
+  
+  .editUserBtn {
+    background-color: gray;
+  }
+  
+  .deleteBtn {
+    background-color: #dc3545;
+  }
+  
+  .actionBtn:disabled {
+    background-color: #b0b0b0;
+    cursor: not-allowed;
+  }
+  
+  .actionBtn:hover:not(:disabled) {
+    opacity: 0.85;
+    transform: translateY(-2px);
+  }
+  

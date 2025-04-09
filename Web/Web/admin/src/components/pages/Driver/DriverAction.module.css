@@ -1,0 +1,88 @@
+/* 🌟 Container chứa các nút hành động */
+.actionContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 12px; /* 👈 Giảm padding để không quá lớn */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #ffffff; /* 👈 Giữ nền trắng, nhẹ nhàng hơn */
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 👈 Thêm hiệu ứng nhẹ */
+}
+
+/* 📌 Tiêu đề của khối hành động */
+.actionTitle {
+    font-size: 16px; /* 👈 Giảm kích thước cho chuyên nghiệp hơn */
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #343a40;
+}
+
+.actionTitle i {
+    font-size: 18px;
+}
+
+/* 📌 Layout cho nhóm nút */
+.actionButtons {
+    display: flex;
+    gap: 8px; /* 👈 Giảm khoảng cách giữa các nút */
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* 📌 Nút hành động */
+.actionBtn {
+    display: flex;
+    align-items: center;
+    gap: 6px; /* 👈 Giảm khoảng cách giữa icon và chữ */
+    padding: 8px 12px; /* 👈 Giảm padding để nút không quá lớn */
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    min-width: 160px; /* 👈 Giảm chiều rộng tối thiểu của nút */
+    justify-content: center;
+}
+
+.editUserBtn {
+    background-color: gray;
+}
+/* 🟦 Nút Thêm */
+.addUserBtn {
+    background-color: #007bff;
+}
+
+/* 🟧 Nút Xem Vé */
+.viewTicketBtn {
+    background-color: #ff9800;
+}
+
+/* 🟩 Nút Lịch Sử */
+.viewHistoryBtn {
+    background-color: #28a745;
+}
+
+/* 🟥 Nút Xóa */
+.deleteBtn {
+    background-color: #dc3545;
+}
+
+/* 🔘 Nút bị vô hiệu hóa */
+.deleteBtn:disabled {
+    background-color: #b0b0b0; /* 👈 Màu xám sáng hơn để dễ nhìn */
+    cursor: not-allowed;
+}
+
+/* 🔥 Hiệu ứng hover */
+.actionBtn:hover:not(:disabled) {
+    opacity: 0.85; /* 👈 Giảm độ sáng nhẹ khi hover */
+    transform: translateY(-2px); /* 👈 Hiệu ứng nổi nhẹ khi di chuột */
+}

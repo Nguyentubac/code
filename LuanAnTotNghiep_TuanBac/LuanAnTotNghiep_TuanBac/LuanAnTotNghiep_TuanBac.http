@@ -1,6 +1,0 @@
-@LuanAnTotNghiep_TuanBac_HostAddress = http://localhost:5150
-
-GET {{LuanAnTotNghiep_TuanBac_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

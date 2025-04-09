@@ -1,0 +1,93 @@
+/* 🌟 Sidebar Container */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background: #ffffff;
+  border-right: 2px solid #e0e0e0;
+  padding-top: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+/* 📌 Menu List */
+.menuList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* 📌 Mục Menu */
+.menuItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  border-left: 4px solid transparent;
+  background-color: transparent;
+}
+
+/* 🟢 Hover Mục Menu */
+.menuItem:hover {
+  background: #f5f5f5;
+}
+
+/* 🔵 Mục Menu Được Chọn */
+.menuItem.active {
+  background: #007bff;
+  color: white;
+  font-weight: bold;
+  border-left: 4px solid #0056b3;
+}
+
+/* 🔽 Submenu Container */
+.subMenu {
+  padding-left: 20px;
+  background-color: #fafafa;
+  border-left: 2px solid #eee;
+  transition: all 0.3s ease-in-out;
+}
+
+/* 🔹 Submenu Item */
+.subMenuItem {
+  padding: 10px 24px;
+  font-size: 15px;
+  color: #555;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out, color 0.2s;
+}
+
+/* 🎯 Hover Submenu */
+.subMenuItem:hover {
+  background-color: #f0f0f0;
+  color: #007bff;
+  border-left: 3px solid #007bff;
+}
+
+/* 🔵 Submenu Đang Active */
+.subMenuItem.active {
+  background-color: #007bff;
+  color: white;
+  font-weight: 600;
+}
+
+/* 🏆 Responsive Sidebar */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 200px;
+  }
+
+  .menuItem {
+    font-size: 14px;
+    padding: 10px 15px;
+  }
+
+  .subMenuItem {
+    font-size: 13px;
+    padding: 8px 20px;
+  }
+}

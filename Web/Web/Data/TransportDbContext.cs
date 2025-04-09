@@ -1,0 +1,24 @@
+﻿using BackendAPI.Models;
+using Microsoft.EntityFrameworkCore;
+using Web.Models;
+
+namespace Web.Data;
+public class TransportDbContext : DbContext
+{
+    public TransportDbContext(DbContextOptions<TransportDbContext> options) : base(options) { }
+    //public DbSet<Customer> Customers { get; set; }
+    public DbSet<User> Users { get; set; }
+    public DbSet<Ride> Rides { get; set; }
+    public DbSet<Driver> Drivers { get; set; }
+    public DbSet<Notification> Notifications { get; set; }
+
+    public DbSet<Admins> Admins { get; set; }
+    public DbSet<RouteTrip> RouteTrips { get; set; }
+    public DbSet<Vehicles> Vehicles { get; set; }
+    public DbSet<Payments> Payments { get; set; }
+    public DbSet<Rating> Ratings { get; set; }
+    public DbSet<Promotion> Promotions { get; set; }
+
+    public DbSet<VehicleDriver> VehicleDrivers { get; set; }
+}
+

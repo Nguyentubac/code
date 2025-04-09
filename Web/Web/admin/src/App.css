@@ -1,0 +1,137 @@
+/* Reset mặc định */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Layout tổng thể */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* Header */
+.header {
+    background-color: #007bff;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 20px;
+}
+
+/* Bố cục chính gồm sidebar và nội dung */
+.main-layout {
+    display: flex;
+    flex: 1;
+    height: calc(100vh - 60px); /* Trừ chiều cao của header */
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background-color: #222;
+    color: white;
+    height: 100%;
+    padding: 20px;
+    position: fixed;
+    left: 0;
+    top: 60px; /* Tránh header */
+    overflow-y: auto;
+}
+
+.sidebar a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    margin: 5px 0;
+    transition: background 0.3s ease;
+}
+
+.sidebar a:hover {
+    background-color: #444;
+}
+
+/* Nội dung chính */
+.content {
+    flex: 1;
+    margin-left: 5px; /* Dịch phải để tránh sidebar */
+    padding: 0px;
+    background: #f4f4f4;
+    overflow-y: auto;
+}
+
+/* Cải thiện form */
+.form {
+    max-width: 500px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form input, .form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Cải thiện bảng dữ liệu */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+    border-radius: 6px;
+}
+
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.table th {
+    background-color: #007bff;
+    color: white;
+}
+
+.table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.table tr:hover {
+    background-color: #ddd;
+}
+
+/* Nút */
+.button {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.button.primary {
+    background-color: #28a745;
+    color: white;
+}
+
+.button.primary:hover {
+    background-color: #218838;
+}
+
+.button.danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.button.danger:hover {
+    background-color: #c82333;
+}
