@@ -28,46 +28,40 @@ namespace Web.Controllers
                     .Include(r => r.VehicleDriver)
                         .ThenInclude(vd => vd.Vehicle)
                     .Include(r => r.User)
-                    .Include(r => r.RouteTrip) // Giữ nguyên vì ta đã [ForeignKey("RouteTripScheduleId")] trong model
-                    .Select(r => new
-                    {
-                        r.Id,
-
-                        // Liên kết đúng field đã tồn tại
-                        RouteTripScheduleId = r.RouteTripScheduleId,
-                        RouteTripCode = r.RouteTrip != null ? r.RouteTrip.Code : null,
-
-                        VehicleId = r.VehicleDriver != null && r.VehicleDriver.Vehicle != null
-                            ? (int?)r.VehicleDriver.Vehicle.Id
-                            : null,
-                        VehiclePlate = r.VehicleDriver != null && r.VehicleDriver.Vehicle != null
-                            ? r.VehicleDriver.Vehicle.PlateNumber
-                            : null,
-                        DriverId = r.VehicleDriver != null && r.VehicleDriver.Driver != null
-                            ? (int?)r.VehicleDriver.Driver.Id
-                            : null,
-                        DriverName = r.VehicleDriver != null && r.VehicleDriver.Driver != null
-                            ? r.VehicleDriver.Driver.FullName
-                            : null,
-                        PassengerName = r.User != null ? r.User.FullName : "Ẩn danh",
-
-                        r.PickupLocation,
-                        r.DropoffLocation,
-                        r.Status,
-
-                        PickupTime = r.PickupTime.HasValue ? r.PickupTime.Value.ToString("yyyy-MM-dd HH:mm") : null,
-                        DropoffTime = r.DropoffTime.HasValue ? r.DropoffTime.Value.ToString("yyyy-MM-dd HH:mm") : null,
-                        CreatedAt = r.CreatedAt.HasValue ? r.CreatedAt.Value.ToString("yyyy-MM-dd HH:mm") : null
-                    })
+                    .Include(r => r.RouteTrip)
                     .ToListAsync();
 
-                return Ok(rides);
+                var result = rides.Select(r => new
+                {
+                    r.Id,
+                    r.RouteTripScheduleId,
+                    RouteTripCode = r.RouteTrip != null ? r.RouteTrip.Code : "Không rõ",
+
+                    VehicleId = r.VehicleDriver?.Vehicle?.Id,
+                    VehiclePlate = r.VehicleDriver?.Vehicle?.PlateNumber ?? "Không rõ",
+                    DriverId = r.VehicleDriver?.Driver?.Id,
+                    DriverName = r.VehicleDriver?.Driver?.FullName ?? "Không rõ",
+                    PassengerName = r.User?.FullName ?? "Ẩn danh",
+
+                    r.PickupLocation,
+                    r.DropoffLocation,
+                    r.Status,
+
+                    PickupTime = r.PickupTime.HasValue ? r.PickupTime.Value.ToString("yyyy-MM-dd HH:mm") : null,
+                    DropoffTime = r.DropoffTime.HasValue ? r.DropoffTime.Value.ToString("yyyy-MM-dd HH:mm") : null,
+                    CreatedAt = r.CreatedAt.HasValue ? r.CreatedAt.Value.ToString("yyyy-MM-dd HH:mm") : null
+                });
+
+                return Ok(result);
             }
             catch (Exception ex)
             {
+                Console.WriteLine("❌ Lỗi khi truy xuất Rides:");
+                Console.WriteLine(ex.ToString());
                 return StatusCode(500, $"Lỗi khi truy xuất Rides: {ex.Message}");
             }
         }
+
 
 
 

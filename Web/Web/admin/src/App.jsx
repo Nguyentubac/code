@@ -14,6 +14,8 @@ import RideReport from "./components/pages/RideReport/RideReport";
 import HeaderBar from "./components/Header/HeaderBar";
 import AssignmentForm from "./components/pages/AssignmentManagement/AssignmentForm";
 import AssignmentList from "./components/pages/AssignmentManagement/AssignmentList";
+import VehicleStatusManagement from "./components/pages/Vehicle/VehicleStatusManagement";
+import VehicleInfoManagement from "./components/pages/Vehicle/VehicleInfoManagement";
 function App() {
   const [setSelectedItem] = useState("users");
 
@@ -44,6 +46,23 @@ function App() {
                 }
               />
               <Route
+                path="/vehicles/info"
+                element={
+                  <PrivateRoute>
+                    <VehicleInfoManagement />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/vehicles/status"
+                element={
+                  <PrivateRoute>
+                    <VehicleStatusManagement />
+                  </PrivateRoute>
+                }
+              />
+
+              <Route
                 path="/users"
                 element={
                   <PrivateRoute>
@@ -63,7 +82,7 @@ function App() {
                 path="/vehicledriver"
                 element={
                   <PrivateRoute>
-                    <AssignmentForm/>
+                    <AssignmentForm />
                   </PrivateRoute>
                 }
               />
@@ -71,7 +90,7 @@ function App() {
                 path="/assignment-list"
                 element={
                   <PrivateRoute>
-                    <AssignmentList/>
+                    <AssignmentList />
                   </PrivateRoute>
                 }
               />
@@ -108,7 +127,7 @@ function App() {
                 }
               />
             </Routes>
-            
+
           </div>
         </div>
       </div>

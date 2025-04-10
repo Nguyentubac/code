@@ -21,6 +21,7 @@ export const getVehicle = async (id) => {
 };
 
 
+
 export const addVehicle = async (vehicle) => {
     try {
         const response = await api.post("/vehicle", vehicle);
@@ -48,6 +49,10 @@ export const deleteVehicle = async (id) => {
         throw new Error(error.response?.data?.message || "Không thể xóa phương tiện");
     }
 };
+export const updateVehicleStatus = async (id, status) => {
+    const res = await api.put(`/vehicle/status/${id}`, { id, status });
+    return res.data;
+  };
 
 // Thêm default export
 export default {
@@ -55,5 +60,6 @@ export default {
     getVehicle,
     addVehicle,
     updateVehicle,
-    deleteVehicle
+    deleteVehicle,
+    updateVehicleStatus
 };

@@ -16,7 +16,7 @@ function SideBar({ setSelectedItem }) {
 
   const handleItemClick = (item) => {
     if (item.subItems) {
-      setActiveItem(item.key); // mở submenu
+      setActiveItem(item.key);
     } else {
       setActiveItem(item.key);
       if (typeof setSelectedItem === "function") {
@@ -34,7 +34,14 @@ function SideBar({ setSelectedItem }) {
   };
 
   const menuItems = [
-    { key: "vehicles", label: "Phương tiện" },
+    {
+      key: "vehicles",
+      label: "Phương tiện",
+      subItems: [
+        { key: "vehicles/info", label: "Thông tin phương tiện" },
+        { key: "vehicles/status", label: "Trạng thái phương tiện" },
+      ],
+    },
     { key: "users", label: "Người dùng" },
     { key: "drivers", label: "Tài xế" },
     {
@@ -42,7 +49,7 @@ function SideBar({ setSelectedItem }) {
       label: "Phân công",
       subItems: [
         { key: "vehicledriver", label: "Phân công tài xế" },
-        { key: "assignment-list", label: "Danh sách phân công" }, // ✅ sửa lại key
+        { key: "assignment-list", label: "Danh sách phân công" },
       ],
     },
     { key: "Admins", label: "Quản trị" },
@@ -91,5 +98,3 @@ function SideBar({ setSelectedItem }) {
 }
 
 export default SideBar;
-
-

@@ -3,8 +3,24 @@
   "WorkspaceRootPath": "D:\\code\\Web\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{0BA7609D-0B33-486E-BE31-076CD0902692}|Web\\Web.csproj|d:\\code\\web\\web\\controllers\\vehiclescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0BA7609D-0B33-486E-BE31-076CD0902692}|Web\\Web.csproj|solutionrelative:web\\controllers\\vehiclescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{0BA7609D-0B33-486E-BE31-076CD0902692}|Web\\Web.csproj|d:\\code\\web\\web\\controllers\\ridescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0BA7609D-0B33-486E-BE31-076CD0902692}|Web\\Web.csproj|solutionrelative:web\\controllers\\ridescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0BA7609D-0B33-486E-BE31-076CD0902692}|Web\\Web.csproj|d:\\code\\web\\web\\models\\vehicles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0BA7609D-0B33-486E-BE31-076CD0902692}|Web\\Web.csproj|solutionrelative:web\\models\\vehicles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0BA7609D-0B33-486E-BE31-076CD0902692}|Web\\Web.csproj|d:\\code\\web\\web\\dtos\\vehiclestatusdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0BA7609D-0B33-486E-BE31-076CD0902692}|Web\\Web.csproj|solutionrelative:web\\dtos\\vehiclestatusdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0BA7609D-0B33-486E-BE31-076CD0902692}|Web\\Web.csproj|d:\\code\\web\\web\\data\\transportdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0BA7609D-0B33-486E-BE31-076CD0902692}|Web\\Web.csproj|solutionrelative:web\\data\\transportdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0BA7609D-0B33-486E-BE31-076CD0902692}|Web\\Web.csproj|d:\\code\\web\\web\\models\\ride.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -33,10 +49,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{0BA7609D-0B33-486E-BE31-076CD0902692}|Web\\Web.csproj|d:\\code\\web\\web\\models\\driver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0BA7609D-0B33-486E-BE31-076CD0902692}|Web\\Web.csproj|solutionrelative:web\\models\\driver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0BA7609D-0B33-486E-BE31-076CD0902692}|Web\\Web.csproj|d:\\code\\web\\web\\models\\vehicles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0BA7609D-0B33-486E-BE31-076CD0902692}|Web\\Web.csproj|solutionrelative:web\\models\\vehicles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0BA7609D-0B33-486E-BE31-076CD0902692}|Web\\Web.csproj|d:\\code\\web\\web\\models\\vehicledriver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -87,10 +99,6 @@
       "RelativeMoniker": "D:0:0:{0BA7609D-0B33-486E-BE31-076CD0902692}|Web\\Web.csproj|solutionrelative:web\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0BA7609D-0B33-486E-BE31-076CD0902692}|Web\\Web.csproj|d:\\code\\web\\web\\controllers\\vehiclescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0BA7609D-0B33-486E-BE31-076CD0902692}|Web\\Web.csproj|solutionrelative:web\\controllers\\vehiclescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{0BA7609D-0B33-486E-BE31-076CD0902692}|Web\\Web.csproj|d:\\code\\web\\web\\controllers\\ratingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0BA7609D-0B33-486E-BE31-076CD0902692}|Web\\Web.csproj|solutionrelative:web\\controllers\\ratingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -109,10 +117,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{0BA7609D-0B33-486E-BE31-076CD0902692}|Web\\Web.csproj|d:\\code\\web\\web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0BA7609D-0B33-486E-BE31-076CD0902692}|Web\\Web.csproj|solutionrelative:web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0BA7609D-0B33-486E-BE31-076CD0902692}|Web\\Web.csproj|d:\\code\\web\\web\\data\\transportdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0BA7609D-0B33-486E-BE31-076CD0902692}|Web\\Web.csproj|solutionrelative:web\\data\\transportdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0BA7609D-0B33-486E-BE31-076CD0902692}|Web\\Web.csproj|d:\\code\\web\\web\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -146,72 +150,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
+              "Title": "VehicleStatusDto.cs",
+              "DocumentMoniker": "D:\\code\\Web\\Web\\DTOs\\VehicleStatusDto.cs",
+              "RelativeDocumentMoniker": "Web\\DTOs\\VehicleStatusDto.cs",
+              "ToolTip": "D:\\code\\Web\\Web\\DTOs\\VehicleStatusDto.cs",
+              "RelativeToolTip": "Web\\DTOs\\VehicleStatusDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-10T08:04:54.885Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "RidesController.cs",
               "DocumentMoniker": "D:\\code\\Web\\Web\\Controllers\\RidesController.cs",
               "RelativeDocumentMoniker": "Web\\Controllers\\RidesController.cs",
               "ToolTip": "D:\\code\\Web\\Web\\Controllers\\RidesController.cs",
               "RelativeToolTip": "Web\\Controllers\\RidesController.cs",
-              "ViewState": "AgIAAGMAAAAAAAAAAAAkwHQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAhwBwAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-15T15:42:59.896Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Rating.cs",
-              "DocumentMoniker": "D:\\code\\Web\\Web\\Models\\Rating.cs",
-              "RelativeDocumentMoniker": "Web\\Models\\Rating.cs",
-              "ToolTip": "D:\\code\\Web\\Web\\Models\\Rating.cs",
-              "RelativeToolTip": "Web\\Models\\Rating.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAA3wB0AAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-15T14:39:51.676Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Ride.cs",
-              "DocumentMoniker": "D:\\code\\Web\\Web\\Models\\Ride.cs",
-              "RelativeDocumentMoniker": "Web\\Models\\Ride.cs",
-              "ToolTip": "D:\\code\\Web\\Web\\Models\\Ride.cs",
-              "RelativeToolTip": "Web\\Models\\Ride.cs",
-              "ViewState": "AgIAAC4AAAAAAAAAAAAowD0AAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-15T14:39:51.635Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "RouteTrip.cs",
-              "DocumentMoniker": "D:\\code\\Web\\Web\\Models\\RouteTrip.cs",
-              "RelativeDocumentMoniker": "Web\\Models\\RouteTrip.cs",
-              "ToolTip": "D:\\code\\Web\\Web\\Models\\RouteTrip.cs",
-              "RelativeToolTip": "Web\\Models\\RouteTrip.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAYwCkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T16:36:59.47Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "PromoUsage.cs",
-              "DocumentMoniker": "D:\\code\\Web\\Web\\Models\\PromoUsage.cs",
-              "RelativeDocumentMoniker": "Web\\Models\\PromoUsage.cs",
-              "ToolTip": "D:\\code\\Web\\Web\\Models\\PromoUsage.cs",
-              "RelativeToolTip": "Web\\Models\\PromoUsage.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-15T14:39:51.714Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "VehicleDriverController.cs",
               "DocumentMoniker": "D:\\code\\Web\\Web\\Controllers\\VehicleDriverController.cs",
               "RelativeDocumentMoniker": "Web\\Controllers\\VehicleDriverController.cs",
@@ -223,7 +192,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 10,
               "Title": "Admins.cs",
               "DocumentMoniker": "D:\\code\\Web\\Web\\Models\\Admins.cs",
               "RelativeDocumentMoniker": "Web\\Models\\Admins.cs",
@@ -235,19 +204,95 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Vehicles.cs",
-              "DocumentMoniker": "D:\\code\\Web\\Web\\Models\\Vehicles.cs",
-              "RelativeDocumentMoniker": "Web\\Models\\Vehicles.cs",
-              "ToolTip": "D:\\code\\Web\\Web\\Models\\Vehicles.cs",
-              "RelativeToolTip": "Web\\Models\\Vehicles.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAYwCUAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "VehiclesController.cs",
+              "DocumentMoniker": "D:\\code\\Web\\Web\\Controllers\\VehiclesController.cs",
+              "RelativeDocumentMoniker": "Web\\Controllers\\VehiclesController.cs",
+              "ToolTip": "D:\\code\\Web\\Web\\Controllers\\VehiclesController.cs",
+              "RelativeToolTip": "Web\\Controllers\\VehiclesController.cs",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAzwFAAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-15T14:39:49.796Z"
+              "WhenOpened": "2025-03-15T15:34:03.062Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "TransportDbContext.cs",
+              "DocumentMoniker": "D:\\code\\Web\\Web\\Data\\TransportDbContext.cs",
+              "RelativeDocumentMoniker": "Web\\Data\\TransportDbContext.cs",
+              "ToolTip": "D:\\code\\Web\\Web\\Data\\TransportDbContext.cs",
+              "RelativeToolTip": "Web\\Data\\TransportDbContext.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAswBQAAABHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T14:39:51.84Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Vehicles.cs",
+              "DocumentMoniker": "D:\\code\\Web\\Web\\Models\\Vehicles.cs",
+              "RelativeDocumentMoniker": "Web\\Models\\Vehicles.cs",
+              "ToolTip": "D:\\code\\Web\\Web\\Models\\Vehicles.cs*",
+              "RelativeToolTip": "Web\\Models\\Vehicles.cs*",
+              "ViewState": "AgIAACwAAAAAAAAAAIAxwDgAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T14:39:49.796Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "PromoUsage.cs",
+              "DocumentMoniker": "D:\\code\\Web\\Web\\Models\\PromoUsage.cs",
+              "RelativeDocumentMoniker": "Web\\Models\\PromoUsage.cs",
+              "ToolTip": "D:\\code\\Web\\Web\\Models\\PromoUsage.cs",
+              "RelativeToolTip": "Web\\Models\\PromoUsage.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T14:39:51.714Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "RouteTrip.cs",
+              "DocumentMoniker": "D:\\code\\Web\\Web\\Models\\RouteTrip.cs",
+              "RelativeDocumentMoniker": "Web\\Models\\RouteTrip.cs",
+              "ToolTip": "D:\\code\\Web\\Web\\Models\\RouteTrip.cs",
+              "RelativeToolTip": "Web\\Models\\RouteTrip.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAYwCkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T16:36:59.47Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Ride.cs",
+              "DocumentMoniker": "D:\\code\\Web\\Web\\Models\\Ride.cs",
+              "RelativeDocumentMoniker": "Web\\Models\\Ride.cs",
+              "ToolTip": "D:\\code\\Web\\Web\\Models\\Ride.cs",
+              "RelativeToolTip": "Web\\Models\\Ride.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAowEQAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T14:39:51.635Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Rating.cs",
+              "DocumentMoniker": "D:\\code\\Web\\Web\\Models\\Rating.cs",
+              "RelativeDocumentMoniker": "Web\\Models\\Rating.cs",
+              "ToolTip": "D:\\code\\Web\\Web\\Models\\Rating.cs",
+              "RelativeToolTip": "Web\\Models\\Rating.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAA3wB0AAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-15T14:39:51.676Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "RouteTripsController.cs",
               "DocumentMoniker": "D:\\code\\Web\\Web\\Controllers\\RouteTripsController.cs",
               "RelativeDocumentMoniker": "Web\\Controllers\\RouteTripsController.cs",
@@ -259,7 +304,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "VehicleDriver.cs",
               "DocumentMoniker": "D:\\code\\Web\\Web\\Models\\VehicleDriver.cs",
               "RelativeDocumentMoniker": "Web\\Models\\VehicleDriver.cs",
@@ -271,7 +316,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "User.cs",
               "DocumentMoniker": "D:\\code\\Web\\Web\\Models\\User.cs",
               "RelativeDocumentMoniker": "Web\\Models\\User.cs",
@@ -283,7 +328,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 11,
               "Title": "Driver.cs",
               "DocumentMoniker": "D:\\code\\Web\\Web\\Models\\Driver.cs",
               "RelativeDocumentMoniker": "Web\\Models\\Driver.cs",
@@ -295,7 +340,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 15,
               "Title": "Promotion.cs",
               "DocumentMoniker": "D:\\code\\Web\\Web\\Models\\Promotion.cs",
               "RelativeDocumentMoniker": "Web\\Models\\Promotion.cs",
@@ -307,7 +352,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 16,
               "Title": "Payments.cs",
               "DocumentMoniker": "D:\\code\\Web\\Web\\Models\\Payments.cs",
               "RelativeDocumentMoniker": "Web\\Models\\Payments.cs",
@@ -319,7 +364,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 17,
               "Title": "NotificationHub.cs",
               "DocumentMoniker": "D:\\code\\Web\\Web\\Models\\NotificationHub.cs",
               "RelativeDocumentMoniker": "Web\\Models\\NotificationHub.cs",
@@ -331,7 +376,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 18,
               "Title": "Notification.cs",
               "DocumentMoniker": "D:\\code\\Web\\Web\\Models\\Notification.cs",
               "RelativeDocumentMoniker": "Web\\Models\\Notification.cs",
@@ -343,7 +388,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 19,
               "Title": "LoginRequest.cs",
               "DocumentMoniker": "D:\\code\\Web\\Web\\Models\\LoginRequest.cs",
               "RelativeDocumentMoniker": "Web\\Models\\LoginRequest.cs",
@@ -355,7 +400,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 20,
               "Title": "AdminsController.cs",
               "DocumentMoniker": "D:\\code\\Web\\Web\\Controllers\\AdminsController.cs",
               "RelativeDocumentMoniker": "Web\\Controllers\\AdminsController.cs",
@@ -367,7 +412,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 21,
               "Title": "AuthController.cs",
               "DocumentMoniker": "D:\\code\\Web\\Web\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "Web\\Controllers\\AuthController.cs",
@@ -379,7 +424,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 22,
               "Title": "NotificationsController.cs",
               "DocumentMoniker": "D:\\code\\Web\\Web\\Controllers\\NotificationsController.cs",
               "RelativeDocumentMoniker": "Web\\Controllers\\NotificationsController.cs",
@@ -391,7 +436,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 23,
               "Title": "UserController.cs",
               "DocumentMoniker": "D:\\code\\Web\\Web\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "Web\\Controllers\\UserController.cs",
@@ -403,19 +448,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "VehiclesController.cs",
-              "DocumentMoniker": "D:\\code\\Web\\Web\\Controllers\\VehiclesController.cs",
-              "RelativeDocumentMoniker": "Web\\Controllers\\VehiclesController.cs",
-              "ToolTip": "D:\\code\\Web\\Web\\Controllers\\VehiclesController.cs",
-              "RelativeToolTip": "Web\\Controllers\\VehiclesController.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAlwCUAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-15T15:34:03.062Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 24,
               "Title": "RatingsController.cs",
               "DocumentMoniker": "D:\\code\\Web\\Web\\Controllers\\RatingsController.cs",
               "RelativeDocumentMoniker": "Web\\Controllers\\RatingsController.cs",
@@ -427,7 +460,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 25,
               "Title": "PromotionsController.cs",
               "DocumentMoniker": "D:\\code\\Web\\Web\\Controllers\\PromotionsController.cs",
               "RelativeDocumentMoniker": "Web\\Controllers\\PromotionsController.cs",
@@ -439,7 +472,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 26,
               "Title": "PaymentsController.cs",
               "DocumentMoniker": "D:\\code\\Web\\Web\\Controllers\\PaymentsController.cs",
               "RelativeDocumentMoniker": "Web\\Controllers\\PaymentsController.cs",
@@ -451,7 +484,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 27,
               "Title": "DriversController.cs",
               "DocumentMoniker": "D:\\code\\Web\\Web\\Controllers\\DriversController.cs",
               "RelativeDocumentMoniker": "Web\\Controllers\\DriversController.cs",
@@ -463,7 +496,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 28,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\code\\Web\\Web\\Program.cs",
               "RelativeDocumentMoniker": "Web\\Program.cs",
@@ -475,19 +508,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "TransportDbContext.cs",
-              "DocumentMoniker": "D:\\code\\Web\\Web\\Data\\TransportDbContext.cs",
-              "RelativeDocumentMoniker": "Web\\Data\\TransportDbContext.cs",
-              "ToolTip": "D:\\code\\Web\\Web\\Data\\TransportDbContext.cs",
-              "RelativeToolTip": "Web\\Data\\TransportDbContext.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAA3wA8AAAA0AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-15T14:39:51.84Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 29,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\code\\Web\\Web\\appsettings.json",
               "RelativeDocumentMoniker": "Web\\appsettings.json",
@@ -499,7 +520,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 30,
               "Title": "package-lock.json",
               "DocumentMoniker": "D:\\code\\Web\\Web\\package-lock.json",
               "RelativeDocumentMoniker": "Web\\package-lock.json",
@@ -511,7 +532,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 31,
               "Title": "package.json",
               "DocumentMoniker": "D:\\code\\Web\\Web\\package.json",
               "RelativeDocumentMoniker": "Web\\package.json",
@@ -523,7 +544,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 32,
               "Title": "appsettings.Development.json",
               "DocumentMoniker": "D:\\code\\Web\\Web\\appsettings.Development.json",
               "RelativeDocumentMoniker": "Web\\appsettings.Development.json",
@@ -535,7 +556,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 33,
               "Title": "Web.csproj",
               "DocumentMoniker": "D:\\code\\Web\\Web\\Web.csproj",
               "RelativeDocumentMoniker": "Web\\Web.csproj",
@@ -547,7 +568,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 34,
               "Title": "launchSettings.json",
               "DocumentMoniker": "D:\\code\\Web\\Web\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "Web\\Properties\\launchSettings.json",

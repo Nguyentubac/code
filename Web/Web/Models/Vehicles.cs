@@ -11,14 +11,16 @@ public class Vehicles
     public int Id { get; set; }
 
     [Required, StringLength(20)]
-    public string PlateNumber { get; set; }
+    public string? PlateNumber { get; set; }
 
     [Required, StringLength(50)]
-    public string Model { get; set; }
+    public string? Model { get; set; }
 
     [Required, StringLength(20)]
-    public string Color { get; set; }
+    public string? Color { get; set; }
 
+    [Required]
+    [Display(Name = "Trạng thái")]
     public byte Status { get; set; }
 
     public DateTime? LastMaintenance { get; set; }
@@ -28,13 +30,13 @@ public class Vehicles
     public DateTime? UpdatedAt { get; set; }
 
     [Required, StringLength(255)]
-    public string OwnerName { get; set; }
+    public string? OwnerName { get; set; }
 
     [Required, StringLength(50)]
-    public string ChassisNumber { get; set; }
+    public string? ChassisNumber { get; set; }
 
     [Required, StringLength(50)]
-    public string EngineNumber { get; set; }
+    public string? EngineNumber { get; set; }
 
     public DateTime? RegistrationDate { get; set; }
 
@@ -50,7 +52,7 @@ public class Vehicles
     public DateTime? LastInspectionDate { get; set; }
 
     [Required, StringLength(50)]
-    public string VehicleType { get; set; }
+    public string? VehicleType { get; set; }
 
     [StringLength(500)]
     public string? LuxuryFeatures { get; set; }

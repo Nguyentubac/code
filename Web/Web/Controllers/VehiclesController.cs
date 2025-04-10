@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Web.Models;
 using Web.Data;
+using Web.DTOs;
 
 namespace Web.Controllers;
 
@@ -69,4 +70,27 @@ public class VehicleController : ControllerBase
         await _context.SaveChangesAsync();
         return NoContent();
     }
+    [HttpPut("status/{id}")]
+    public async Task<IActionResult> UpdateVehicleStatus(int id, [FromBody] VehicleStatusDto dto)
+    {
+        if (id != dto.Id)
+            return BadRequest("ID không khớp.");
+
+        var vehicle = await _context.Vehicles.FindAsync(id);
+        if (vehicle == null)
+            return NotFound("Không tìm thấy phương tiện.");
+
+        vehicle.Status = dto.Status;
+
+        try
+        {
+            await _context.SaveChangesAsync();
+            return Ok(new { message = "Cập nhật trạng thái thành công." });
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Lỗi khi cập nhật trạng thái: {ex.Message}");
+        }
+    }
+
 }

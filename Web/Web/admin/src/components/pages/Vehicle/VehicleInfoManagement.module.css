@@ -1,0 +1,78 @@
+/* 🌟 Giao diện quản lý phương tiện */
+.vehicleManagement {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* 📌 Tiêu đề */
+  h2 {
+    text-align: left;
+    margin-bottom: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #343a40;
+  }
+  
+  /* 📊 Bọc bảng */
+  .tableContainer {
+    overflow-x: auto;
+    max-width: 100%;
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+  }
+  
+  /* 📋 Bảng hiển thị */
+  .excelTable {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+  }
+  
+  /* 📌 Header bảng */
+  .excelTable th {
+    color: #343a40;
+    padding: 10px;
+    text-align: left;
+    font-weight: bold;
+    font-size: 14px;
+    border-bottom: 2px solid #ddd;
+    white-space: nowrap;
+  }
+  
+  /* 📌 Nội dung bảng */
+  .excelTable td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    white-space: nowrap;
+  }
+  
+  /* 🌟 Hover row */
+  .excelTable tr:hover {
+    background-color: #f1f3f5;
+  }
+  
+  /* ✅ Dòng đang chọn */
+  .selectedRow {
+    background-color: #d1e7ff !important;
+  }
+  
+  /* 📌 Responsive Table */
+  @media (max-width: 768px) {
+    .tableContainer {
+      overflow-x: auto;
+    }
+  
+    .excelTable th,
+    .excelTable td {
+      font-size: 14px;
+      padding: 8px;
+    }
+  }
+  
+  

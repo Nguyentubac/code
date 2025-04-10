@@ -1,0 +1,51 @@
+.container {
+    padding: 2rem;
+    background-color: #f8f8f8;
+    border-radius: 12px;
+  }
+  
+  .title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  .table th,
+  .table td {
+    padding: 12px 16px;
+    border: 1px solid #ddd;
+    text-align: center;
+  }
+  
+  .table th {
+    background-color: #f0f0f0;
+    font-weight: 600;
+  }
+  
+  .table select {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    background-color: #fff;
+    transition: border 0.2s;
+  }
+  
+  .table select:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
