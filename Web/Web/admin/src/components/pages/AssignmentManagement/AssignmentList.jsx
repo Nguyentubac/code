@@ -20,8 +20,8 @@ const AssignmentList = () => {
 
   const filteredAssignments = filterDate
     ? assignments.filter((a) =>
-        a.assignedDate?.startsWith(filterDate)
-      )
+      a.assignedAt?.startsWith(filterDate)
+    )
     : assignments;
 
   return (
@@ -37,6 +37,7 @@ const AssignmentList = () => {
             onChange={(e) => setFilterDate(e.target.value)}
           />
           <button onClick={() => setFilterDate(new Date().toISOString().slice(0, 10))}>Today</button>
+          <button onClick={() => setFilterDate("")}>Clear</button>
         </label>
         {/* sửa */}
       </div>

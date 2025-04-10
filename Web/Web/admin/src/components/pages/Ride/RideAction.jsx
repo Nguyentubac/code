@@ -38,6 +38,7 @@ const RideAction = ({ onAdd, onEdit, onDelete, selectedRide }) => {
         onClick={handleDelete} // Use SweetAlert for delete confirmation
         disabled={!selectedRide}
         className={styles.deleteBtn}
+        hidden
       >
         🗑️ Xoá
       </button>

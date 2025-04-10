@@ -56,9 +56,16 @@ namespace Web.Models
 
         [Required(ErrorMessage = "Thời gian đón là bắt buộc")]
         [Display(Name = "Thời gian đón")]
-        public DateTime PickupTime { get; set; }
+        public DateTime? PickupTime { get; set; }
 
         [Display(Name = "Thời gian đến")]
         public DateTime? DropoffTime { get; set; }
+
+        // 🧩 Quan hệ
+        public VehicleDriver? VehicleDriver { get; set; }
+        public User? User { get; set; }
+
+        [ForeignKey("RouteTripScheduleId")]
+        public RouteTrip? RouteTrip { get; set; }
     }
 }

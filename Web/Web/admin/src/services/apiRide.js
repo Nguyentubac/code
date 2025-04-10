@@ -26,5 +26,7 @@ export const updateRide = async (id, ride) => {
 
 // Xoá chuyến đi
 export const deleteRide = async (id) => {
-  await api.delete(`/Rides/${id}`);
+  const res = await api.delete(`/Rides/${id}`);
+  console.log("✅ Phản hồi xoá ride:", res.status);
+  return res;
 };

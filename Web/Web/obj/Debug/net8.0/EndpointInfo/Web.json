@@ -2444,6 +2444,15 @@
             "type": "string",
             "format": "date-time",
             "nullable": true
+          },
+          "vehicleDriver": {
+            "$ref": "#/components/schemas/VehicleDriver"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          },
+          "routeTrip": {
+            "$ref": "#/components/schemas/RouteTrip"
           }
         },
         "additionalProperties": false

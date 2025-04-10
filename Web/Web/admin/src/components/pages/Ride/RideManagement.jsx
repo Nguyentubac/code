@@ -5,17 +5,17 @@ import {
   updateRide,
   deleteRide,
 } from "../../../services/apiRide";
-import AddRideForm from "./AddRideForm";  // Import form thêm chuyến đi
+import AddRideForm from "./AddRideForm";
 import EditRideForm from "./EditRideForm";
 import RideAction from "./RideAction";
 import styles from "./RideManagement.module.css";
-import Swal from 'sweetalert2'; // Import SweetAlert2
-import Modal from "../../Modal/Modal"; // Giả sử Modal được cài đặt tương tự như UserManagement
+import Swal from 'sweetalert2';
+import Modal from "../../Modal/Modal";
 
 export default function RideManagement() {
   const [rides, setRides] = useState([]);
   const [selectedRide, setSelectedRide] = useState(null);
-  const [showAddForm, setShowAddForm] = useState(false); // Quản lý modal thêm chuyến đi
+  const [showAddForm, setShowAddForm] = useState(false);
   const [showEditForm, setShowEditForm] = useState(false);
 
   const fetchRides = async () => {
@@ -35,7 +35,7 @@ export default function RideManagement() {
     try {
       await createRide(formData);
       fetchRides();
-      setShowAddForm(false); // Đóng form sau khi thêm
+      setShowAddForm(false);
     } catch (error) {
       console.error("Lỗi thêm chuyến đi:", error);
     }
@@ -43,34 +43,55 @@ export default function RideManagement() {
 
   const handleDeleteRide = async () => {
     if (!selectedRide) return;
-    Swal.fire({
+  
+    const confirm = await Swal.fire({
       icon: 'warning',
       title: 'Bạn có chắc muốn xoá chuyến đi này?',
       showCancelButton: true,
       confirmButtonText: 'Xóa',
       cancelButtonText: 'Hủy',
-    }).then(async (result) => {
-      if (result.isConfirmed) {
-        try {
-          await deleteRide(selectedRide.id);
-          setSelectedRide(null);
-          fetchRides();
+    });
+  
+    if (confirm.isConfirmed) {
+      try {
+        const res = await deleteRide(selectedRide.id);
+  
+        if (res.status === 204) {
           Swal.fire({
             icon: 'success',
             title: 'Chuyến đi đã được xóa thành công!',
-            showConfirmButton: true
           });
-        } catch (error) {
-          console.error("Lỗi xoá chuyến đi:", error);
+  
+          setRides((prev) => prev.filter((r) => r.id !== selectedRide.id));
+          setSelectedRide(null);
+        } else {
+          console.warn("❗ Không nhận được mã phản hồi 204 như mong đợi:", res);
           Swal.fire({
             icon: 'error',
-            title: 'Không thể xoá chuyến đi.',
-            showConfirmButton: true
+            title: 'Không xoá được chuyến đi.',
+            text: `Mã phản hồi từ máy chủ: ${res.status}`,
           });
         }
+      } catch (error) {
+        console.error("❌ Lỗi khi gọi deleteRide():", error);
+  
+        if (error.response) {
+          console.log("📦 Lỗi chi tiết từ server:", {
+            status: error.response.status,
+            data: error.response.data,
+            headers: error.response.headers,
+          });
+        }
+  
+        Swal.fire({
+          icon: 'error',
+          title: 'Lỗi khi xoá chuyến đi.',
+          text: error.response?.data || "Đã có lỗi xảy ra khi kết nối máy chủ.",
+        });
       }
-    });
+    }
   };
+  
 
   const handleSelect = (ride) => {
     setSelectedRide(ride);
@@ -81,13 +102,12 @@ export default function RideManagement() {
       <h2 className={styles.title}>Quản lý chuyến đi</h2>
 
       <RideAction
-        onAdd={() => setShowAddForm(true)} // Mở form thêm chuyến đi khi nhấn nút
+        onAdd={() => setShowAddForm(true)}
         onEdit={() => setShowEditForm(true)}
         onDelete={handleDeleteRide}
         selectedRide={selectedRide}
       />
 
-      {/* Modal Thêm chuyến đi */}
       {showAddForm && (
         <Modal isOpen={showAddForm} onClose={() => setShowAddForm(false)}>
           <AddRideForm onSubmit={handleAddRide} onCancel={() => setShowAddForm(false)} />
@@ -97,7 +117,7 @@ export default function RideManagement() {
       {showEditForm && selectedRide && (
         <EditRideForm
           ride={selectedRide}
-          onSubmit={handleAddRide} // Hoặc tạo hàm riêng cho chỉnh sửa
+          onSubmit={handleAddRide}
           onCancel={() => setShowEditForm(false)}
         />
       )}
@@ -106,9 +126,9 @@ export default function RideManagement() {
         <thead>
           <tr>
             <th>ID</th>
-            <th>RouteId</th>
-            <th>VehicleId</th>
-            <th>DriverId</th>
+            <th>Route</th>
+            <th>Xe</th>
+            <th>Tài xế</th>
             <th>Hành khách</th>
             <th>Điểm đón</th>
             <th>Điểm trả</th>
@@ -124,14 +144,22 @@ export default function RideManagement() {
               className={selectedRide?.id === ride.id ? styles.selectedRow : ""}
             >
               <td>{ride.id}</td>
-              <td>{ride.routeId}</td>
-              <td>{ride.vehicleId}</td>
-              <td>{ride.driverId}</td>
+              <td>{ride.routeTripScheduleId}</td>
+              <td>{ride.vehiclePlate} ({ride.vehicleId})</td>
+              <td>{ride.driverName} ({ride.driverId})</td>
               <td>{ride.passengerName}</td>
               <td>{ride.pickupLocation}</td>
               <td>{ride.dropoffLocation}</td>
-              <td>{ride.status}</td>
-              <td>{new Date(ride.pickupTime).toLocaleString()}</td>
+              <td>
+                {ride.status === 0
+                  ? "Chưa bắt đầu"
+                  : ride.status === 1
+                  ? "Đang chạy"
+                  : ride.status === 3
+                  ? "Hoàn thành"
+                  : "Không rõ"}
+              </td>
+              <td>{ride.pickupTime}</td>
             </tr>
           ))}
         </tbody>

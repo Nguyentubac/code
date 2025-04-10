@@ -23,26 +23,43 @@ namespace Web.Controllers
             try
             {
                 var rides = await _context.Rides
-    .Select(r => new
-    {
-        r.Id,
-        r.UserId,
-        r.PickupLocation,
-        r.DropoffLocation,
-        r.EstimatedFare,
-        r.Status,
-        r.PaymentId,
-        r.ReturnRideId,
-        r.IsRoundTrip,
-        r.DistanceKm,
-        r.VehicleDriverId,
-        r.RouteTripScheduleId,
-        PickupTime =  r.PickupTime.ToString("HH:mm dd/MM/yyyy"),
-        DropoffTime = r.DropoffTime.HasValue ? r.DropoffTime.Value.ToString("HH:mm dd/MM/yyyy") : null,
-        CreatedAt = r.CreatedAt.HasValue ? r.CreatedAt.Value.ToString("HH:mm dd/MM/yyyy") : null,
-        UpdatedAt = r.UpdatedAt.HasValue ? r.UpdatedAt.Value.ToString("HH:mm dd/MM/yyyy") : null
-    })
-    .ToListAsync();
+                    .Include(r => r.VehicleDriver)
+                        .ThenInclude(vd => vd.Driver)
+                    .Include(r => r.VehicleDriver)
+                        .ThenInclude(vd => vd.Vehicle)
+                    .Include(r => r.User)
+                    .Include(r => r.RouteTrip) // Giữ nguyên vì ta đã [ForeignKey("RouteTripScheduleId")] trong model
+                    .Select(r => new
+                    {
+                        r.Id,
+
+                        // Liên kết đúng field đã tồn tại
+                        RouteTripScheduleId = r.RouteTripScheduleId,
+                        RouteTripCode = r.RouteTrip != null ? r.RouteTrip.Code : null,
+
+                        VehicleId = r.VehicleDriver != null && r.VehicleDriver.Vehicle != null
+                            ? (int?)r.VehicleDriver.Vehicle.Id
+                            : null,
+                        VehiclePlate = r.VehicleDriver != null && r.VehicleDriver.Vehicle != null
+                            ? r.VehicleDriver.Vehicle.PlateNumber
+                            : null,
+                        DriverId = r.VehicleDriver != null && r.VehicleDriver.Driver != null
+                            ? (int?)r.VehicleDriver.Driver.Id
+                            : null,
+                        DriverName = r.VehicleDriver != null && r.VehicleDriver.Driver != null
+                            ? r.VehicleDriver.Driver.FullName
+                            : null,
+                        PassengerName = r.User != null ? r.User.FullName : "Ẩn danh",
+
+                        r.PickupLocation,
+                        r.DropoffLocation,
+                        r.Status,
+
+                        PickupTime = r.PickupTime.HasValue ? r.PickupTime.Value.ToString("yyyy-MM-dd HH:mm") : null,
+                        DropoffTime = r.DropoffTime.HasValue ? r.DropoffTime.Value.ToString("yyyy-MM-dd HH:mm") : null,
+                        CreatedAt = r.CreatedAt.HasValue ? r.CreatedAt.Value.ToString("yyyy-MM-dd HH:mm") : null
+                    })
+                    .ToListAsync();
 
                 return Ok(rides);
             }
@@ -51,6 +68,8 @@ namespace Web.Controllers
                 return StatusCode(500, $"Lỗi khi truy xuất Rides: {ex.Message}");
             }
         }
+
+
 
         // GET: api/Rides/5
         [HttpGet("{id}")]
@@ -68,7 +87,6 @@ namespace Web.Controllers
             ride.CreatedAt = DateTime.Now;
             _context.Rides.Add(ride);
             await _context.SaveChangesAsync();
-
             return CreatedAtAction(nameof(GetRide), new { id = ride.Id }, ride);
         }
 
@@ -89,13 +107,20 @@ namespace Web.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteRide(int id)
         {
-            var ride = await _context.Rides.FindAsync(id);
-            if (ride == null) return NotFound();
+            try
+            {
+                var ride = await _context.Rides.FindAsync(id);
+                if (ride == null) return NotFound();
 
-            _context.Rides.Remove(ride);
-            await _context.SaveChangesAsync();
+                _context.Rides.Remove(ride);
+                await _context.SaveChangesAsync();
 
-            return NoContent();
+                return NoContent(); // Trả về 204 thành công
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Không thể xoá: {ex.Message}");
+            }
         }
     }
 }

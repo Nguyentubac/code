@@ -15,15 +15,15 @@ const AssignmentForm = () => {
   const [assignments, setAssignments] = useState([]);
   const [vehicles, setVehicles] = useState([]);
   const [drivers, setDrivers] = useState([]);
-  const formattedDate = `${String(date.getDate()).padStart(2, "0")}/${String(date.getMonth() + 1).padStart(2, "0")}/${date.getFullYear()}`;
 
   const [selectedVehicleId, setSelectedVehicleId] = useState("");
   const [selectedDriverId, setSelectedDriverId] = useState("");
   const [filterDate, setFilterDate] = useState("");
 
+
   const fetchAssignments = async () => {
     try {
-      const data = await getAssignments(filterDate); // filter theo ngày
+      const data = await getAssignments(filterDate);
       setAssignments(data);
     } catch (error) {
       console.error("Lỗi khi lấy danh sách phân công:", error);
@@ -162,29 +162,39 @@ const AssignmentForm = () => {
         </div>
       </div>
 
-      {/* Danh sách phân công */}
-      <div className={styles.list}>
-        <h4>Danh sách đã phân công</h4>
-        {assignments.length === 0 ? (
-          <p>Không có phân công nào</p>
-        ) : (
-          <ul>
-            {assignments.map((a) => {
-              // Chuyển đổi ngày từ yyyy-mm-dd thành dd/mm/yyyy
-              const date = new Date(a.date);
-              const formattedDate = `${String(date.getDate()).padStart(2, "0")}/${String(date.getMonth() + 1).padStart(2, "0")}/${date.getFullYear()}`;
-              
-              return (
-                <li key={a.id}>
-                  Xe: {a.vehicle?.plateNumber || a.vehicleId} - Tài xế:{" "}
-                  {a.driver?.fullName || a.driverId} - Ngày: {formattedDate}
-                  <button onClick={() => handleUnassign(a.id)}>Huỷ</button>
-                </li>
-              );
-            })}
-          </ul>
-        )}
-      </div>
+      <table className={styles.assignmentTable}>
+        <thead>
+          <tr>
+            <th>Xe</th>
+            <th>Tài xế</th>
+            <th>Ngày phân công</th>
+            <th>Thao tác</th>
+          </tr>
+        </thead>
+        <tbody>
+          {assignments.map((a) => {
+            const formatDate = (input) => {
+              const date = new Date(input);
+              return !isNaN(date.getTime()) ? date.toLocaleDateString("vi-VN") : "Không rõ";
+            };
+
+            return (
+              <tr key={a.id}>
+                <td>{a.vehicle?.plateNumber || a.vehicleId}</td>
+                <td>{a.driver?.fullName || a.driverId}</td>
+                <td>{formatDate(a.date || a.assignedAt)}</td>
+                <td>
+                  <button className={styles.unassignBtn} onClick={() => handleUnassign(a.id)}>
+                    Huỷ
+                  </button>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+
+
     </div>
   );
 };
