@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "../Driver/EditDriverForm.module.css";
 import { updateVehicle } from "../../../services/apiVehicle";
+import Swal from 'sweetalert2'; // Import SweetAlert2
 
 export default function EditVehicleForm({ selectedVehicle, closeModal, refreshVehicles }) {
   const [formData, setFormData] = useState(selectedVehicle);
@@ -28,9 +29,19 @@ export default function EditVehicleForm({ selectedVehicle, closeModal, refreshVe
       await updateVehicle(formData.id, payload);
       refreshVehicles();
       closeModal();
+      Swal.fire({
+        icon: 'success',
+        title: 'Phương tiện đã được cập nhật thành công!',
+        showConfirmButton: true
+      });
     } catch (err) {
       console.error("Lỗi khi cập nhật phương tiện:", err);
-      alert("Cập nhật phương tiện thất bại!");
+      Swal.fire({
+        icon: 'error',
+        title: 'Cập nhật phương tiện thất bại!',
+        text: 'Vui lòng thử lại sau!',
+        showConfirmButton: true
+      });
     }
   };
 

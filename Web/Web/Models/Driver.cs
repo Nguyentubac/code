@@ -16,7 +16,7 @@ public class Driver
     [Range(0, double.MaxValue)]
     public decimal? Earnings { get; set; } // nullable decimal(10,2)
 
-    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    public DateTime CreatedAt { get; set; } = DateTime.Now;
 
     public DateTime? UpdatedAt { get; set; }
 

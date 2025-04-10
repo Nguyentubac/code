@@ -36,7 +36,7 @@ public class VehicleController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<Vehicles>> CreateVehicle(Vehicles vehicle)
     {
-        vehicle.CreatedAt = DateTime.UtcNow;
+        vehicle.CreatedAt = DateTime.Now;
         _context.Vehicles.Add(vehicle);
         await _context.SaveChangesAsync();
         return CreatedAtAction(nameof(GetVehicle), new { id = vehicle.Id }, vehicle);
@@ -51,7 +51,7 @@ public class VehicleController : ControllerBase
         var existing = await _context.Vehicles.FindAsync(id);
         if (existing == null) return NotFound();
 
-        updatedVehicle.UpdatedAt = DateTime.UtcNow;
+        updatedVehicle.UpdatedAt = DateTime.Now;
 
         _context.Entry(existing).CurrentValues.SetValues(updatedVehicle);
         await _context.SaveChangesAsync();

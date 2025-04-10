@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "./RideForm.module.css";
+import Swal from 'sweetalert2'; // Import SweetAlert2
 
 const AddRideForm = ({ onSubmit, onCancel }) => {
   const [formData, setFormData] = useState({
@@ -22,7 +23,23 @@ const AddRideForm = ({ onSubmit, onCancel }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(formData);
+    onSubmit(formData)
+      .then(() => {
+        // Success message with SweetAlert2
+        Swal.fire({
+          icon: 'success',
+          title: 'Chuyến đi đã được thêm!',
+          text: 'Chuyến đi đã được tạo thành công.',
+        });
+      })
+      .catch((error) => {
+        // Error message with SweetAlert2
+        Swal.fire({
+          icon: 'error',
+          title: 'Lỗi!',
+          text: 'Không thể thêm chuyến đi. Vui lòng thử lại.',
+        });
+      });
   };
 
   return (

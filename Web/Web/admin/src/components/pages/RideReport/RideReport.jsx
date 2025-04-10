@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getRides } from "../../../services/apiRide";
+import Swal from 'sweetalert2'; // Import SweetAlert2
 import styles from "./RideReport.module.css";
 
 export default function RideReport() {
@@ -10,8 +11,19 @@ export default function RideReport() {
       try {
         const data = await getRides();
         setRides(data);
+        Swal.fire({
+          title: 'Dữ liệu đã được tải thành công!',
+          icon: 'success',
+          confirmButtonText: 'Đóng'
+        });
       } catch (err) {
         console.error("Lỗi khi lấy danh sách chuyến đi:", err);
+        Swal.fire({
+          title: 'Lỗi!',
+          text: 'Không thể tải dữ liệu chuyến đi. Vui lòng thử lại.',
+          icon: 'error',
+          confirmButtonText: 'Đóng'
+        });
       }
     };
     fetchData();

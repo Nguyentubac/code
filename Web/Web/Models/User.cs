@@ -29,7 +29,7 @@ public class User
     [StringLength(255)]
     public string Address { get; set; } // Địa chỉ của người dùng (tùy chọn)
 
-    public DateTime CreatedAt { get; set; } = DateTime.UtcNow; // Thời điểm tài khoản được tạo
+    public DateTime CreatedAt { get; set; } = DateTime.Now; // Thời điểm tài khoản được tạo
 
     public DateTime? UpdatedAt { get; set; } // Thời điểm cập nhật gần nhất (có thể null)
 

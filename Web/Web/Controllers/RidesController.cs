@@ -65,7 +65,7 @@ namespace Web.Controllers
         [HttpPost]
         public async Task<ActionResult<Ride>> PostRide(Ride ride)
         {
-            ride.CreatedAt = DateTime.UtcNow;
+            ride.CreatedAt = DateTime.Now;
             _context.Rides.Add(ride);
             await _context.SaveChangesAsync();
 

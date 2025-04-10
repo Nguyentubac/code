@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { loginAdmin } from "../../../services/apiAdmin"; 
 import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2'; // Import SweetAlert2
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -19,11 +20,21 @@ const LoginForm = () => {
 
         navigate("/"); // ✅ Điều hướng về trang chính
       } else {
-        alert("Đăng nhập thất bại: Không có token");
+        Swal.fire({
+          title: 'Đăng nhập thất bại',
+          text: 'Sever Not Found',
+          icon: 'error',
+          confirmButtonText: 'Đóng'
+        });
       }
     } catch (error) {
       console.error("Lỗi đăng nhập:", error);
-      alert("Sai email hoặc mật khẩu");
+      Swal.fire({
+        title: 'Lỗi!',
+        text: 'Sai email hoặc mật khẩu',
+        icon: 'error',
+        confirmButtonText: 'Đóng'
+      });
     }
   };
 

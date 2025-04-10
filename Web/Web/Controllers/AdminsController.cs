@@ -102,7 +102,7 @@ namespace Web.Controllers
             bool verified = BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash);
             if (!verified) return Unauthorized("Sai mật khẩu");
 
-            user.LastLoginAt = DateTime.UtcNow;
+            user.LastLoginAt = DateTime.Now;
             await _context.SaveChangesAsync();
 
             // ✅ Sinh JWT token
@@ -141,7 +141,7 @@ namespace Web.Controllers
                 issuer: _config["Jwt:Issuer"],
                 audience: _config["Jwt:Audience"],
                 claims: claims,
-                expires: DateTime.UtcNow.AddHours(2),
+                expires: DateTime.Now.AddHours(2),
                 signingCredentials: creds
             );
 

@@ -21,6 +21,7 @@ export default function AssignmentManagement() {
   const [selectedDriverId, setSelectedDriverId] = useState("");
   const [error, setError] = useState("");
   const [filterDate, setFilterDate] = useState("");
+  
   useEffect(() => {
     fetchAll();
   }, []);
@@ -43,9 +44,10 @@ export default function AssignmentManagement() {
 
   const filteredAssignments = assignments.filter((a) => {
     if (!filterDate) return true;
-    const assignedDate = new Date(a.assignedAt).toISOString().split("T")[0];
+    const assignedDate = new Date(a.assignedAt).toLocaleDateString("en-GB"); // dd/mm/yyyy format
     return assignedDate === filterDate;
   });
+
   const handleAssign = async () => {
     if (!selectedVehicleId || !selectedDriverId) {
       alert("Vui lòng chọn xe và tài xế.");
@@ -81,7 +83,6 @@ export default function AssignmentManagement() {
       {error && <p className={styles.error}>{error}</p>}
 
       <div className={styles.selectPanel}>
-
         <div className={styles.flex}>
           <div>
             <select value={selectedVehicleId} onChange={(e) => setSelectedVehicleId(e.target.value)}>
@@ -101,6 +102,7 @@ export default function AssignmentManagement() {
                 </option>
               ))}
             </select>
+
             <input
               type="date"
               className="form-control"
@@ -108,6 +110,7 @@ export default function AssignmentManagement() {
               onChange={(e) => setFilterDate(e.target.value)}
             />
           </div>
+
           <div className={styles.importSection}>
             <h4>Nhập phân công từ file Excel</h4>
             <DownloadExcelTemplate />
@@ -137,7 +140,7 @@ export default function AssignmentManagement() {
               <td>{a.id}</td>
               <td>{a.vehicle?.plateNumber}</td>
               <td>{a.driver?.fullName}</td>
-              <td>{new Date(a.assignedAt).toLocaleString()}</td>
+              <td>{new Date(a.assignedAt).toLocaleString("en-GB")}</td> {/* Định dạng dd/mm/yyyy */}
               <td>{a.unassignedAt ? "Đã hủy" : "Đang hoạt động"}</td>
               <td>
                 {!a.unassignedAt && (

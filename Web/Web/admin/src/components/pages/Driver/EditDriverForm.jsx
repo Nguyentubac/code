@@ -13,10 +13,9 @@ export default function EditDriverForm({ selectedDriver, closeModal, refreshDriv
     const { name, value, type, checked } = e.target;
     setFormData({
       ...formData,
-      [name]: type === "checkbox" ? checked : value,
+      [name]: type === "checkbox" ? checked : value, // Cập nhật checkbox đúng cách
     });
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -50,12 +49,7 @@ export default function EditDriverForm({ selectedDriver, closeModal, refreshDriv
             type="checkbox"
             name="status"
             checked={formData.status === "Active"}
-            onChange={(e) =>
-              setFormData({
-                ...formData,
-                status: e.target.checked ? "Active" : "Inactive",
-              })
-            }
+            onChange={handleChange} // Đảm bảo trạng thái được cập nhật đúng
           />
           Hoạt động
         </label>

@@ -52,8 +52,8 @@ namespace Web.Controllers
                 return BadRequest("Số điện thoại đã tồn tại.");
             }
             user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(user.PasswordHash);
-            user.CreatedAt = DateTime.UtcNow;
-            user.UpdatedAt = DateTime.UtcNow;
+            user.CreatedAt = DateTime.Now;
+            user.UpdatedAt = DateTime.Now;
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 

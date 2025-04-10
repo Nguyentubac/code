@@ -10,27 +10,27 @@ namespace Web.Models
 
             [Required]
             [MaxLength(255)]
-            public string FullName { get; set; }
+            public string? FullName { get; set; }
 
             [Required]
             [MaxLength(255)]
             [EmailAddress]
-            public string Email { get; set; }
+            public string? Email { get; set; }
 
             [Required]
-            public string PasswordHash { get; set; }
+            public string? PasswordHash { get; set; }
 
             [MaxLength(20)]
-            public string PhoneNumber { get; set; }
+            public string? PhoneNumber { get; set; }
 
             [MaxLength(500)]
             public string? AvatarUrl { get; set; }
 
             public bool IsActive { get; set; } = true;
 
-            public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+            public DateTime CreatedAt { get; set; } = DateTime.Now;
 
-            public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
+            public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
             public DateTime? LastLoginAt { get; set; }
 

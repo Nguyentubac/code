@@ -78,13 +78,14 @@
   cursor: pointer;
 }
 
-.checkboxLabel {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
 .error {
   color: red;
   margin-bottom: 1rem;
+}
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  margin: 10px 0;
 }

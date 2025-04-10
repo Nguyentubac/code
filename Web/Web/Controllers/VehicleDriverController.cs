@@ -50,8 +50,8 @@ public class VehicleDriverController : ControllerBase
 
         if (exists) return BadRequest("Tài xế đã được phân công cho xe này.");
 
-        input.CreatedAt = DateTime.UtcNow;
-        input.AssignedAt = DateTime.UtcNow;
+        input.CreatedAt = DateTime.Now;
+        input.AssignedAt = DateTime.Now;
         input.UnassignedAt = null;
 
         _context.VehicleDrivers.Add(input);

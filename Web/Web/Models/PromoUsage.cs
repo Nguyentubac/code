@@ -16,5 +16,5 @@ public class PromoUsage
     [ForeignKey("Promotion")]
     public int PromotionId { get; set; }
 
-    public DateTime UsedAt { get; set; } = DateTime.UtcNow;
+    public DateTime UsedAt { get; set; } = DateTime.Now;
 }

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Modal from "../../common/Modal";
 import AddRouteTripForm from "./AddRouteTripForm";
 import EditRouteTripForm from "./EditRouteTripForm";
+import Swal from "sweetalert2";
 
 const RouteTripAction = ({ selected, refreshData, resetSelection }) => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -14,7 +15,11 @@ const RouteTripAction = ({ selected, refreshData, resetSelection }) => {
 
   const handleEdit = () => {
     if (!selected) {
-      alert("Vui lòng chọn chuyến tuyến để sửa.");
+      Swal.fire({
+        icon: 'warning',
+        title: 'Chưa chọn chuyến tuyến',
+        text: 'Vui lòng chọn chuyến tuyến để sửa.',
+      });
       return;
     }
     setIsEdit(true);
@@ -28,11 +33,9 @@ const RouteTripAction = ({ selected, refreshData, resetSelection }) => {
 
   return (
     <>
-      <div style={{ marginBottom: "1rem" }}>
+      <div className="actionButtons">
         <button onClick={handleAdd}>➕ Thêm chuyến tuyến</button>
-        <button onClick={handleEdit} style={{ marginLeft: "0.5rem" }}>
-          ✏️ Sửa chuyến tuyến
-        </button>
+        <button onClick={handleEdit}>✏️ Sửa chuyến tuyến</button>
       </div>
 
       <Modal isOpen={modalOpen} onClose={closeModal}>

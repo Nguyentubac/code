@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./RouteTrip.module.css";
 import { createRouteTrip } from "../../../services/apiRouteTrip";
+import Swal from 'sweetalert2'; // Import SweetAlert2
 
 const AddRouteTripForm = ({ closeModal, refreshData }) => {
   const [formData, setFormData] = useState({
@@ -26,9 +27,19 @@ const AddRouteTripForm = ({ closeModal, refreshData }) => {
       await createRouteTrip(formData);
       refreshData();
       closeModal();
+      Swal.fire({
+        icon: 'success',
+        title: 'Chuyến tuyến đã được tạo thành công!',
+        showConfirmButton: true
+      });
     } catch (error) {
       console.error("Lỗi khi tạo RouteTrip:", error);
-      alert("Không thể tạo RouteTrip.");
+      Swal.fire({
+        icon: 'error',
+        title: 'Không thể tạo chuyến tuyến.',
+        text: 'Vui lòng thử lại sau!',
+        showConfirmButton: true
+      });
     }
   };
 

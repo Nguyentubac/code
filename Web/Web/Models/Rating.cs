@@ -27,7 +27,7 @@ public class Rating
     [StringLength(500)]
     public string Feedback { get; set; } // Nhận xét từ khách hàng
 
-    public DateTime CreatedAt { get; set; } = DateTime.UtcNow; // Thời gian tạo đánh giá
+    public DateTime CreatedAt { get; set; } = DateTime.Now; // Thời gian tạo đánh giá
 
     public DateTime? UpdatedAt { get; set; } // Thời gian cập nhật gần nhất (có thể null)
 }

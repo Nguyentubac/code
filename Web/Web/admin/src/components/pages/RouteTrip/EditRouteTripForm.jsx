@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./RouteTrip.module.css";
 import { updateRouteTrip } from "../../../services/apiRouteTrip";
+import Swal from 'sweetalert2'; // Import SweetAlert2
 
 const EditRouteTripForm = ({ routeTrip, closeModal, refreshData }) => {
   const [formData, setFormData] = useState(routeTrip);
@@ -23,9 +24,22 @@ const EditRouteTripForm = ({ routeTrip, closeModal, refreshData }) => {
       await updateRouteTrip(formData.id, formData);
       refreshData();
       closeModal();
+
+      // Success message with SweetAlert2
+      Swal.fire({
+        icon: 'success',
+        title: 'Cập nhật chuyến tuyến thành công!',
+        text: 'Chuyến tuyến đã được cập nhật.',
+      });
     } catch (error) {
       console.error("Lỗi khi cập nhật RouteTrip:", error);
-      alert("Không thể cập nhật RouteTrip.");
+
+      // Error message with SweetAlert2
+      Swal.fire({
+        icon: 'error',
+        title: 'Lỗi!',
+        text: 'Không thể cập nhật RouteTrip. Vui lòng thử lại.',
+      });
     }
   };
 

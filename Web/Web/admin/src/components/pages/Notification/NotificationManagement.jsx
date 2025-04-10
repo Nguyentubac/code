@@ -4,6 +4,7 @@ import { getNotifications } from "../../../services/apiNotification";
 import Modal from "../../Modal/Modal";
 import AddNotificationForm from "./AddNotificationForm";
 import EditNotificationForm from "./EditNotificationForm";
+import Swal from 'sweetalert2'; // Import SweetAlert2
 
 export default function NotificationManagement() {
   const [notifications, setNotifications] = useState([]);
@@ -27,7 +28,6 @@ export default function NotificationManagement() {
     }
   };
 
-
   const filtered = notifications.filter((n) => {
     const matchUser = filter.userId ? String(n.userId) === filter.userId : true;
     const matchType = filter.type ? n.type === filter.type : true;
@@ -36,6 +36,36 @@ export default function NotificationManagement() {
   });
 
   const formatDate = (date) => new Date(date).toLocaleString("vi-VN");
+
+  const handleDelete = (id) => {
+    Swal.fire({
+      icon: 'warning',
+      title: 'Bạn có chắc chắn muốn xóa thông báo này?',
+      showCancelButton: true,
+      confirmButtonText: 'Xóa',
+      cancelButtonText: 'Hủy',
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          // Logic xóa thông báo
+          // await deleteNotification(id);
+          fetchNotifications(); // Lấy lại danh sách sau khi xóa
+          Swal.fire({
+            icon: 'success',
+            title: 'Thông báo đã được xóa thành công!',
+            showConfirmButton: true
+          });
+        } catch (error) {
+          console.error("Lỗi xóa thông báo:", error);
+          Swal.fire({
+            icon: 'error',
+            title: 'Không thể xóa thông báo.',
+            showConfirmButton: true
+          });
+        }
+      }
+    });
+  };
 
   return (
     <div className={styles.container}>
@@ -98,6 +128,7 @@ export default function NotificationManagement() {
                 <td>{formatDate(n.createdAt)}</td>
                 <td>
                   <button onClick={() => { setSelected(n); setIsEditOpen(true); }}>Sửa</button>
+                  <button onClick={() => handleDelete(n.id)}>Xóa</button>
                 </td>
               </tr>
             ))}

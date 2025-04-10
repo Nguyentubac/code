@@ -22,5 +22,5 @@ public class Payments
     [Required, StringLength(50)]
     public string PaymentMethod { get; set; }
 
-    public DateTime PaymentDate { get; set; } = DateTime.UtcNow;
+    public DateTime PaymentDate { get; set; } = DateTime.Now;
 }

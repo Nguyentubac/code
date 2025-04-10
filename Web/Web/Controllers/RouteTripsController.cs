@@ -33,7 +33,7 @@ namespace Web.Controllers
         [HttpPost]
         public async Task<ActionResult<RouteTrip>> Create(RouteTrip item)
         {
-            item.CreatedAt = DateTime.UtcNow;
+            item.CreatedAt = DateTime.Now;   
             _context.RouteTrips.Add(item);
             await _context.SaveChangesAsync();
             return CreatedAtAction(nameof(GetById), new { id = item.Id }, item);

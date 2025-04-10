@@ -5,19 +5,18 @@ import {
   updateRide,
   deleteRide,
 } from "../../../services/apiRide";
-import AddRideForm from "./AddRideForm";
+import AddRideForm from "./AddRideForm";  // Import form thêm chuyến đi
 import EditRideForm from "./EditRideForm";
 import RideAction from "./RideAction";
 import styles from "./RideManagement.module.css";
+import Swal from 'sweetalert2'; // Import SweetAlert2
+import Modal from "../../Modal/Modal"; // Giả sử Modal được cài đặt tương tự như UserManagement
 
 export default function RideManagement() {
   const [rides, setRides] = useState([]);
   const [selectedRide, setSelectedRide] = useState(null);
-  const [showAddForm, setShowAddForm] = useState(false);
+  const [showAddForm, setShowAddForm] = useState(false); // Quản lý modal thêm chuyến đi
   const [showEditForm, setShowEditForm] = useState(false);
-
-  const [filterStatus, setFilterStatus] = useState("");
-  const [filterDate, setFilterDate] = useState("");
 
   const fetchRides = async () => {
     try {
@@ -32,46 +31,45 @@ export default function RideManagement() {
     fetchRides();
   }, []);
 
-  const filteredRides = rides.filter((ride) => {
-    const matchStatus = !filterStatus || ride.status === filterStatus;
-    const matchDate =
-      !filterDate ||
-      new Date(ride.pickupTime).toISOString().slice(0, 10) === filterDate;
-    return matchStatus && matchDate;
-  });
-
   const handleAddRide = async (formData) => {
     try {
       await createRide(formData);
       fetchRides();
-      setShowAddForm(false);
+      setShowAddForm(false); // Đóng form sau khi thêm
     } catch (error) {
       console.error("Lỗi thêm chuyến đi:", error);
     }
   };
 
-  const handleEditRide = async (formData) => {
-    try {
-      await updateRide(formData.id, formData);
-      fetchRides();
-      setShowEditForm(false);
-    } catch (error) {
-      console.error("Lỗi cập nhật chuyến đi:", error);
-    }
-  };
-
   const handleDeleteRide = async () => {
     if (!selectedRide) return;
-    const confirmDelete = window.confirm("Bạn có chắc muốn xoá chuyến đi này?");
-    if (confirmDelete) {
-      try {
-        await deleteRide(selectedRide.id);
-        setSelectedRide(null);
-        fetchRides();
-      } catch (error) {
-        console.error("Lỗi xoá chuyến đi:", error);
+    Swal.fire({
+      icon: 'warning',
+      title: 'Bạn có chắc muốn xoá chuyến đi này?',
+      showCancelButton: true,
+      confirmButtonText: 'Xóa',
+      cancelButtonText: 'Hủy',
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          await deleteRide(selectedRide.id);
+          setSelectedRide(null);
+          fetchRides();
+          Swal.fire({
+            icon: 'success',
+            title: 'Chuyến đi đã được xóa thành công!',
+            showConfirmButton: true
+          });
+        } catch (error) {
+          console.error("Lỗi xoá chuyến đi:", error);
+          Swal.fire({
+            icon: 'error',
+            title: 'Không thể xoá chuyến đi.',
+            showConfirmButton: true
+          });
+        }
       }
-    }
+    });
   };
 
   const handleSelect = (ride) => {
@@ -83,43 +81,23 @@ export default function RideManagement() {
       <h2 className={styles.title}>Quản lý chuyến đi</h2>
 
       <RideAction
-        onAdd={() => setShowAddForm(true)}
+        onAdd={() => setShowAddForm(true)} // Mở form thêm chuyến đi khi nhấn nút
         onEdit={() => setShowEditForm(true)}
         onDelete={handleDeleteRide}
         selectedRide={selectedRide}
       />
 
-      <div className={styles.filterBar}>
-        <select
-          value={filterStatus}
-          onChange={(e) => setFilterStatus(e.target.value)}
-          className={styles.filterSelect}
-        >
-          <option value="">Tất cả trạng thái</option>
-          <option value="Scheduled">Đã lên lịch</option>
-          <option value="Completed">Hoàn tất</option>
-          <option value="Cancelled">Đã huỷ</option>
-        </select>
-
-        <input
-          type="date"
-          value={filterDate}
-          onChange={(e) => setFilterDate(e.target.value)}
-          className={styles.filterDate}
-        />
-      </div>
-
+      {/* Modal Thêm chuyến đi */}
       {showAddForm && (
-        <AddRideForm
-          onSubmit={handleAddRide}
-          onCancel={() => setShowAddForm(false)}
-        />
+        <Modal isOpen={showAddForm} onClose={() => setShowAddForm(false)}>
+          <AddRideForm onSubmit={handleAddRide} onCancel={() => setShowAddForm(false)} />
+        </Modal>
       )}
 
       {showEditForm && selectedRide && (
         <EditRideForm
           ride={selectedRide}
-          onSubmit={handleEditRide}
+          onSubmit={handleAddRide} // Hoặc tạo hàm riêng cho chỉnh sửa
           onCancel={() => setShowEditForm(false)}
         />
       )}
@@ -139,7 +117,7 @@ export default function RideManagement() {
           </tr>
         </thead>
         <tbody>
-          {filteredRides.map((ride) => (
+          {rides.map((ride) => (
             <tr
               key={ride.id}
               onClick={() => handleSelect(ride)}
@@ -161,4 +139,3 @@ export default function RideManagement() {
     </div>
   );
 }
-

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./NotificationManagement.module.css";
 import { updateNotification } from "../../../services/apiNotification";
+import Swal from 'sweetalert2'; // Import SweetAlert2
 
 export default function EditNotificationForm({ notification, closeModal, refreshNotifications }) {
   const [formData, setFormData] = useState(notification);
@@ -17,7 +18,7 @@ export default function EditNotificationForm({ notification, closeModal, refresh
     } else if (["userId", "type", "status"].includes(name)) {
       newValue = value === "" ? "" : parseInt(value); 
     }
-  
+
     setFormData((prev) => ({
       ...prev,
       [name]: newValue,
@@ -34,9 +35,22 @@ export default function EditNotificationForm({ notification, closeModal, refresh
       await updateNotification(formData.id, payload);
       refreshNotifications();
       closeModal();
+
+      // Success message with SweetAlert2
+      Swal.fire({
+        icon: 'success',
+        title: 'Cập nhật thành công!',
+        text: 'Thông báo đã được cập nhật.',
+      });
     } catch (error) {
       console.error("Lỗi cập nhật thông báo:", error);
-      alert("Không thể cập nhật thông báo.");
+
+      // Error message with SweetAlert2
+      Swal.fire({
+        icon: 'error',
+        title: 'Lỗi!',
+        text: 'Không thể cập nhật thông báo.',
+      });
     }
   };
 
@@ -78,9 +92,9 @@ export default function EditNotificationForm({ notification, closeModal, refresh
             type: parseInt(e.target.value)
           }))} required>
             <option value="">Chọn loại thông báo</option>
-            <option value={0}>Hệ thống</option>
-            <option value={1}>Khuyến mãi</option>
-            <option value={2}>Nhắc nhở</option>
+            <option value={1}>Hệ thống</option>
+            <option value={2}>Khuyến mãi</option>
+            <option value={3}>Nhắc nhở</option>
           </select>
           <select name="status" value={formData.status} onChange={handleChange}>
             <option value={0}>Chưa đọc</option>

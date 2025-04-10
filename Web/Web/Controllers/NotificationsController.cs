@@ -42,7 +42,7 @@ namespace Web.Controllers
         [HttpPost]
         public async Task<ActionResult<Notification>> PostNotification(Notification notification)
         {
-            notification.CreatedAt = DateTime.UtcNow;
+            notification.CreatedAt = DateTime.Now;
             _context.Notifications.Add(notification);
             await _context.SaveChangesAsync();
 

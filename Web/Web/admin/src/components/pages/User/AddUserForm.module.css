@@ -63,9 +63,6 @@
     width: 100%;
   }
   .checkboxLabel {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px; /* dùng gap thay vì margin-right */
     font-size: 16px;
     margin: 10px 0;
     cursor: pointer;
@@ -75,4 +72,9 @@
     width: 18px;
     height: 18px;
     accent-color: #007bff; /* màu xanh dương cho checkbox nếu trình duyệt hỗ trợ */
+  }
+  .checkboxLabel {
+    display: flex;
+    align-items: center; /* Căn chỉnh giữa checkbox và chữ theo chiều dọc */
+    gap: 5px; /* Khoảng cách giữa checkbox và chữ */
   }

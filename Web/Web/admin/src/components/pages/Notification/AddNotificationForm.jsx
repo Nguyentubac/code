@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./NotificationManagement.module.css";
 import { addNotification } from "../../../services/apiNotification";
+import Swal from 'sweetalert2'; // Import SweetAlert2
 
 export default function AddNotificationForm({ closeModal, refreshNotifications }) {
   const [formData, setFormData] = useState({
@@ -31,9 +32,19 @@ export default function AddNotificationForm({ closeModal, refreshNotifications }
       await addNotification(payload);
       refreshNotifications();
       closeModal();
+      Swal.fire({
+        icon: 'success',
+        title: 'Thông báo đã được thêm thành công!',
+        showConfirmButton: true
+      });
     } catch (error) {
       console.error("Lỗi thêm thông báo:", error);
-      alert("Không thể thêm thông báo.");
+      Swal.fire({
+        icon: 'error',
+        title: 'Không thể thêm thông báo.',
+        text: 'Vui lòng thử lại sau!',
+        showConfirmButton: true
+      });
     }
   };
 
@@ -73,8 +84,9 @@ export default function AddNotificationForm({ closeModal, refreshNotifications }
             <option value={0}>Chưa đọc</option>
             <option value={1}>Đã đọc</option>
           </select>
+          
           <label className={styles.checkboxLabel}>
-            <input
+          <input
               type="checkbox"
               name="senderIsAdmin"
               checked={formData.senderIsAdmin}

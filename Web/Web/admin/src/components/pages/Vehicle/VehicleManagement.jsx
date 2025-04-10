@@ -9,6 +9,7 @@ import {
 } from "@tanstack/react-table";
 import styles from "../User/UserManagement.module.css";
 import VehicleAction from "./VehicleAction";
+import Swal from "sweetalert2"; // Import SweetAlert2
 
 export default function VehicleManagement() {
   const [vehicles, setVehicles] = useState([]);
@@ -19,7 +20,6 @@ export default function VehicleManagement() {
   useEffect(() => {
     fetchVehicles();
   }, []);
-  error;
 
   const fetchVehicles = async () => {
     try {
@@ -33,17 +33,47 @@ export default function VehicleManagement() {
 
   const handleDeleteVehicles = async () => {
     if (selectedVehicles.length === 0) {
-      alert("Vui lòng chọn ít nhất một phương tiện để xóa.");
+      // SweetAlert2 for no selection
+      Swal.fire({
+        icon: "warning",
+        title: "Chưa chọn phương tiện",
+        text: "Vui lòng chọn ít nhất một phương tiện để xóa.",
+      });
       return;
     }
-    if (window.confirm(`Bạn có chắc chắn muốn xóa ${selectedVehicles.length} phương tiện?`)) {
+
+    // SweetAlert2 confirmation dialog
+    const result = await Swal.fire({
+      title: `Bạn có chắc chắn muốn xóa ${selectedVehicles.length} phương tiện?`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Xóa",
+      cancelButtonText: "Hủy",
+    });
+
+    if (result.isConfirmed) {
       try {
+        // Delete selected vehicles
         await Promise.all(selectedVehicles.map((id) => deleteVehicle(id)));
         setVehicles(vehicles.filter((v) => !selectedVehicles.includes(v.id)));
         setSelectedVehicles([]);
+
+        // Success message with SweetAlert2
+        Swal.fire({
+          icon: "success",
+          title: "Xóa thành công",
+          text: `${selectedVehicles.length} phương tiện đã được xóa.`,
+        });
       } catch (error) {
         console.error("Lỗi khi xóa phương tiện:", error);
         setError("Không thể xóa phương tiện.");
+
+        // Error message with SweetAlert2
+        Swal.fire({
+          icon: "error",
+          title: "Lỗi",
+          text: "Không thể xóa phương tiện. Vui lòng thử lại.",
+        });
       }
     }
   };
@@ -74,10 +104,10 @@ export default function VehicleManagement() {
   const columns = [
     {
       id: "select",
-      header: () => (
+      header: ({ table }) => (
         <input
           type="checkbox"
-          checked={selectedVehicles.length === vehicles.length && vehicles.length > 0}
+          checked={selectedVehicles.length === vehicles.length}
           onChange={handleSelectAll}
         />
       ),
@@ -90,28 +120,61 @@ export default function VehicleManagement() {
       ),
     },
     {
-      accessorKey: "status",
-      header: "Trạng thái",
-      cell: (info) => (
-        <span className={info.getValue() === 1 ? styles.activeStatus : styles.inactiveStatus}>
-          {info.getValue() === 1 ? "✔ Hoạt động" : "❌ Không hoạt động"}
-        </span>
-      ),
+      accessorKey: "id",
+      header: "ID",
     },
-    { accessorKey: "id", header: "ID" },
-    { accessorKey: "plateNumber", header: "Biển số" },
-    { accessorKey: "model", header: "Model" },
-    { accessorKey: "color", header: "Màu xe" },
-    { accessorKey: "vehicleType", header: "Loại xe" },
-    { accessorKey: "ownerName", header: "Chủ sở hữu" },
-    { accessorKey: "capacity", header: "Sức chứa" },
-    { accessorKey: "chassisNumber", header: "Số khung" },
-    { accessorKey: "engineNumber", header: "Số máy" },
-    { accessorKey: "fuelType", header: "Nhiên liệu" },
-    { accessorKey: "luxuryFeatures", header: "Tiện nghi cao cấp" },
-    { accessorKey: "driverComfortFeatures", header: "Tiện ích tài xế" },
-    { accessorKey: "operatingArea", header: "Khu vực hoạt động" },
-    { accessorKey: "entertainmentSystem", header: "Giải trí" },
+    {
+      accessorKey: "plateNumber",
+      header: "Biển số",
+    },
+    {
+      accessorKey: "model",
+      header: "Model",
+    },
+    {
+      accessorKey: "color",
+      header: "Màu xe",
+    },
+    {
+      accessorKey: "vehicleType",
+      header: "Loại xe",
+    },
+    {
+      accessorKey: "ownerName",
+      header: "Chủ sở hữu",
+    },
+    {
+      accessorKey: "capacity",
+      header: "Sức chứa",
+    },
+    {
+      accessorKey: "chassisNumber",
+      header: "Số khung",
+    },
+    {
+      accessorKey: "engineNumber",
+      header: "Số máy",
+    },
+    {
+      accessorKey: "fuelType",
+      header: "Nhiên liệu",
+    },
+    {
+      accessorKey: "luxuryFeatures",
+      header: "Tiện nghi cao cấp",
+    },
+    {
+      accessorKey: "driverComfortFeatures",
+      header: "Tiện ích tài xế",
+    },
+    {
+      accessorKey: "operatingArea",
+      header: "Khu vực hoạt động",
+    },
+    {
+      accessorKey: "entertainmentSystem",
+      header: "Giải trí",
+    },
     {
       accessorKey: "gpsInstalled",
       header: "GPS",
@@ -152,7 +215,6 @@ export default function VehicleManagement() {
       header: "Cập nhật lúc",
       cell: (info) => new Date(info.getValue()).toLocaleString(),
     },
-    
   ];
 
   const tableInstance = useReactTable({
@@ -173,9 +235,7 @@ export default function VehicleManagement() {
         selectedVehicles={selectedVehicles}
         onDelete={handleDeleteVehicles}
       />
-
       <div className={styles.searchContainer}>
-        
         <input
           type="text"
           placeholder="Tìm kiếm phương tiện.../id/biển số/model..."
@@ -212,9 +272,7 @@ export default function VehicleManagement() {
               tableInstance.getRowModel().rows.map((row) => (
                 <tr
                   key={row.id}
-                  className={
-                    selectedVehicles.includes(row.original.id) ? styles.selectedRow : ""
-                  }
+                  className={selectedVehicles.includes(row.original.id) ? styles.selectedRow : ""}
                 >
                   {row.getVisibleCells().map((cell) => (
                     <td key={cell.id}>

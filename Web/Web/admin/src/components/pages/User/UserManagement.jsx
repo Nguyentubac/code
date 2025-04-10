@@ -3,7 +3,7 @@ import { getUsers, deleteUser } from "../../../services/apiUser";
 import { useReactTable, getCoreRowModel, getFilteredRowModel, getSortedRowModel, flexRender } from "@tanstack/react-table";
 import styles from "./UserManagement.module.css"; // Import CSS Module
 import Action from "./Action"; // Import Action Component
-
+import Swal from "sweetalert2";
 export default function UserManagement() {
   const [users, setUsers] = useState([]);
   const [error, setError] = useState("");
@@ -25,17 +25,42 @@ export default function UserManagement() {
 
   const handleDeleteUsers = async () => {
     if (selectedUsers.length === 0) {
-      alert("Vui lòng chọn ít nhất một người dùng để xóa.");
+      Swal.fire({
+        icon: "warning",
+        title: "Chưa chọn người dùng",
+        text: "Vui lòng chọn ít nhất một người dùng để xóa.",
+      });
       return;
     }
-    if (window.confirm(`Bạn có chắc chắn muốn xóa ${selectedUsers.length} người dùng?`)) {
+  
+    const result = await Swal.fire({
+      title: `Bạn có chắc chắn muốn xóa ${selectedUsers.length} người dùng?`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Xóa",
+      cancelButtonText: "Hủy",
+      reverseButtons: true, // Đổi vị trí các nút
+    });
+  
+    if (result.isConfirmed) {
       try {
         await Promise.all(selectedUsers.map((id) => deleteUser(id)));
         setUsers(users.filter((user) => !selectedUsers.includes(user.id)));
         setSelectedUsers([]);
+  
+        Swal.fire({
+          icon: "success",
+          title: "Xóa thành công!",
+          text: `${selectedUsers.length} người dùng đã bị xóa.`,
+        });
       } catch (error) {
         console.error("Lỗi khi xóa user:", error);
         setError("Không thể xóa người dùng.");
+        Swal.fire({
+          icon: "error",
+          title: "Lỗi",
+          text: "Không thể xóa người dùng, vui lòng thử lại.",
+        });
       }
     }
   };
@@ -122,7 +147,7 @@ export default function UserManagement() {
   
         {/* Search bar */}
         <div className={styles.searchContainer}>
-          <i className={`fas fa-search ${styles.searchIcon}`}></i>
+        
           <input
             type="text"
             placeholder="Tìm kiếm người dùng.../id/tên/sđt/email..."

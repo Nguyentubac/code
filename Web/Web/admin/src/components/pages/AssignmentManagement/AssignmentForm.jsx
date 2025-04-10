@@ -15,6 +15,7 @@ const AssignmentForm = () => {
   const [assignments, setAssignments] = useState([]);
   const [vehicles, setVehicles] = useState([]);
   const [drivers, setDrivers] = useState([]);
+  const formattedDate = `${String(date.getDate()).padStart(2, "0")}/${String(date.getMonth() + 1).padStart(2, "0")}/${date.getFullYear()}`;
 
   const [selectedVehicleId, setSelectedVehicleId] = useState("");
   const [selectedDriverId, setSelectedDriverId] = useState("");
@@ -168,13 +169,19 @@ const AssignmentForm = () => {
           <p>Không có phân công nào</p>
         ) : (
           <ul>
-            {assignments.map((a) => (
-              <li key={a.id}>
-                Xe: {a.vehicle?.plateNumber || a.vehicleId} - Tài xế:{" "}
-                {a.driver?.fullName || a.driverId} - Ngày: {a.date}
-                <button onClick={() => handleUnassign(a.id)}>Huỷ</button>
-              </li>
-            ))}
+            {assignments.map((a) => {
+              // Chuyển đổi ngày từ yyyy-mm-dd thành dd/mm/yyyy
+              const date = new Date(a.date);
+              const formattedDate = `${String(date.getDate()).padStart(2, "0")}/${String(date.getMonth() + 1).padStart(2, "0")}/${date.getFullYear()}`;
+              
+              return (
+                <li key={a.id}>
+                  Xe: {a.vehicle?.plateNumber || a.vehicleId} - Tài xế:{" "}
+                  {a.driver?.fullName || a.driverId} - Ngày: {formattedDate}
+                  <button onClick={() => handleUnassign(a.id)}>Huỷ</button>
+                </li>
+              );
+            })}
           </ul>
         )}
       </div>

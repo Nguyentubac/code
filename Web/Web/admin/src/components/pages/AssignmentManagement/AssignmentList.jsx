@@ -36,10 +36,9 @@ const AssignmentList = () => {
             value={filterDate}
             onChange={(e) => setFilterDate(e.target.value)}
           />
+          <button onClick={() => setFilterDate(new Date().toISOString().slice(0, 10))}>Today</button>
         </label>
-        <div>
-            <button>Today</button>
-        </div>
+        {/* sửa */}
       </div>
 
 
@@ -59,7 +58,7 @@ const AssignmentList = () => {
               <tr key={a.id}>
                 <td>{a.vehicle?.plateNumber} - {a.vehicle?.model}</td>
                 <td>{a.driver?.fullName}</td>
-                <td>{new Date(a.assignedDate).toLocaleDateString("vi-VN")}</td>
+                <td>{new Date(a.assignedAt).toLocaleString("en-GB")}</td>
               </tr>
             ))}
           </tbody>
