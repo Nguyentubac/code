@@ -62,6 +62,14 @@ function SideBar({ setSelectedItem }) {
         { key: "ride-report", label: "Báo cáo chuyến đi" },
       ],
     },
+    {
+      key: "payments",
+      label: "Thanh toán",
+      subItems: [
+        { key: "payments", label: "Quản lý thanh toán" },
+        { key: "payment-dashboard", label: "Thống kê thanh toán" },
+      ],
+    },
   ];
 
   return (

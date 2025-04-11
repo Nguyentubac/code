@@ -30,3 +30,15 @@ export const deleteRide = async (id) => {
   console.log("✅ Phản hồi xoá ride:", res.status);
   return res;
 };
+export const getPickupStats = async (month, year) => {
+  try {
+    const res = await api.get("/Rides/pickup-stats", {
+      params: { month, year },
+    });
+    console.log("✅ Dữ liệu thống kê điểm đón:", res.data);
+    return res.data;
+  } catch (error) {
+    console.error("❌ Lỗi khi lấy thống kê điểm đón:", error?.response?.data || error.message);
+    throw error;
+  }
+};

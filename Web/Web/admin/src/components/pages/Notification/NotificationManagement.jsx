@@ -123,7 +123,12 @@ export default function NotificationManagement() {
                 <td>{n.title}</td>
                 <td>{n.message}</td>
                 <td>{n.type}</td>
-                <td>{n.status === 1 ? "✔ Đã đọc" : "❌ Chưa đọc"}</td>
+                <td>
+                  {n.type === 2 ? "Khuyến mãi" :
+                    n.type === 3 ? "Nhắc nhở" :
+                      n.type === 1 ? "Hệ Thống" :
+                        "Không xác định"}
+                </td>
                 <td>{n.senderIsAdmin ? "✔" : "✖"}</td>
                 <td>{formatDate(n.createdAt)}</td>
                 <td>

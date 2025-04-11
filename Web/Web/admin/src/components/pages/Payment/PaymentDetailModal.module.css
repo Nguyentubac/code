@@ -1,0 +1,60 @@
+.modalOverlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modalBox {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  }
+  
+  .infoList {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+  }
+  
+  .infoList li {
+    margin-bottom: 6px;
+  }
+  
+  .rideTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.5rem;
+  }
+  
+  .rideTable th,
+  .rideTable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    font-size: 14px;
+  }
+  
+  .actions {
+    margin-top: 1rem;
+    text-align: right;
+  }
+  .actions button {
+    margin-left: 8px;
+    padding: 6px 12px;
+    border: none;
+    background-color: #0d6efd;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .actions button:hover {
+    background-color: #0b5ed7;
+  }

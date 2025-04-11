@@ -140,10 +140,10 @@ export default function DriverManagement() {
       header: "Ngày tạo",
       cell: (info) => formatDate(info.getValue()),
     },
-    {
-      accessorKey: "updatedAt",
-      header: "Cập nhật lúc",
-      cell: (info) => new Date(info.getValue()).toLocaleString(),
+    { 
+      accessorKey: "updatedAt", 
+      header: "Cập nhật lúc", 
+      cell: (info) => new Date(info.getValue()).toLocaleDateString('en-GB') 
     },
     {
       accessorKey: "status",

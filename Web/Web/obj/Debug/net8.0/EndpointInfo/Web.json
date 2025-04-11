@@ -629,7 +629,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Payments"
+                    "$ref": "#/components/schemas/Payment"
                   }
                 }
               },
@@ -637,7 +637,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Payments"
+                    "$ref": "#/components/schemas/Payment"
                   }
                 }
               },
@@ -645,7 +645,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Payments"
+                    "$ref": "#/components/schemas/Payment"
                   }
                 }
               }
@@ -661,17 +661,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Payments"
+                "$ref": "#/components/schemas/Payment"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Payments"
+                "$ref": "#/components/schemas/Payment"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Payments"
+                "$ref": "#/components/schemas/Payment"
               }
             }
           }
@@ -682,17 +682,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Payments"
+                  "$ref": "#/components/schemas/Payment"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Payments"
+                  "$ref": "#/components/schemas/Payment"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Payments"
+                  "$ref": "#/components/schemas/Payment"
                 }
               }
             }
@@ -722,17 +722,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Payments"
+                  "$ref": "#/components/schemas/Payment"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Payments"
+                  "$ref": "#/components/schemas/Payment"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Payments"
+                  "$ref": "#/components/schemas/Payment"
                 }
               }
             }
@@ -758,17 +758,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Payments"
+                "$ref": "#/components/schemas/Payment"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Payments"
+                "$ref": "#/components/schemas/Payment"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Payments"
+                "$ref": "#/components/schemas/Payment"
               }
             }
           }
@@ -1297,6 +1297,36 @@
             "name": "id",
             "in": "path",
             "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Rides/pickup-stats": {
+      "get": {
+        "tags": [
+          "Rides"
+        ],
+        "parameters": [
+          {
+            "name": "month",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "year",
+            "in": "query",
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -2286,12 +2316,11 @@
         },
         "additionalProperties": false
       },
-      "Payments": {
+      "Payment": {
         "required": [
           "amount",
           "paymentMethod",
-          "rideId",
-          "userId"
+          "paymentStatus"
         ],
         "type": "object",
         "properties": {
@@ -2299,27 +2328,52 @@
             "type": "integer",
             "format": "int32"
           },
-          "rideId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "userId": {
+          "paymentMethod": {
             "type": "integer",
             "format": "int32"
           },
           "amount": {
-            "minimum": 0,
             "type": "number",
             "format": "double"
           },
-          "paymentMethod": {
-            "maxLength": 50,
-            "minLength": 0,
-            "type": "string"
+          "paymentStatus": {
+            "type": "integer",
+            "format": "int32"
           },
-          "paymentDate": {
+          "createdAt": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "nullable": true
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "promotionId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "discountAmount": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "totalAmount": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "promotion": {
+            "$ref": "#/components/schemas/Promotion"
+          },
+          "rides": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Ride"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false

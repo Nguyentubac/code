@@ -32,7 +32,7 @@ export default function UserManagement() {
       });
       return;
     }
-  
+
     const result = await Swal.fire({
       title: `Bạn có chắc chắn muốn xóa ${selectedUsers.length} người dùng?`,
       icon: "warning",
@@ -41,13 +41,13 @@ export default function UserManagement() {
       cancelButtonText: "Hủy",
       reverseButtons: true, // Đổi vị trí các nút
     });
-  
+
     if (result.isConfirmed) {
       try {
         await Promise.all(selectedUsers.map((id) => deleteUser(id)));
         setUsers(users.filter((user) => !selectedUsers.includes(user.id)));
         setSelectedUsers([]);
-  
+
         Swal.fire({
           icon: "success",
           title: "Xóa thành công!",
@@ -104,16 +104,13 @@ export default function UserManagement() {
     { accessorKey: "email", header: "Email" },
     { accessorKey: "fullName", header: "Họ và Tên" },
     { accessorKey: "gender", header: "Giới tính" },
-    { accessorKey: "birthDate",header: "Ngày sinh",cell: (info) => {const value = info.getValue();if (!value) return "Chưa có";const date = new Date(value);const day = String(date.getDate()).padStart(2, "0");const month = String(date.getMonth() + 1).padStart(2, "0");const year = date.getFullYear();return `${day}/${month}/${year}`;},},
+    { accessorKey: "birthDate", header: "Ngày sinh", cell: (info) => { const value = info.getValue(); if (!value) return "Chưa có"; const date = new Date(value); const day = String(date.getDate()).padStart(2, "0"); const month = String(date.getMonth() + 1).padStart(2, "0"); const year = date.getFullYear(); return `${day}/${month}/${year}`; }, },
     { accessorKey: "phoneNumber", header: "Số điện thoại" },
     { accessorKey: "address", header: "Địa chỉ" },
-    { accessorKey: "createdAt", header: "Ngày tạo",cell: (info) => {const value = info.getValue();if (!value) return "Chưa có";const date = new Date(value);const day = String(date.getDate()).padStart(2, "0");const month = String(date.getMonth() + 1).padStart(2, "0");const year = date.getFullYear();return `${day}/${month}/${year}`;},},
-    { accessorKey: "updatedAt", header: "Cập nhật lúc", cell: (info) => new Date(info.getValue()).toLocaleString() },
-    {
-      accessorKey: "isActive",
-      header: "Trạng thái",
-      cell: (info) => (
-        <span className={info.getValue() ? styles.activeStatus : styles.inactiveStatus}>
+    { accessorKey: "createdAt", header: "Ngày tạo", cell: (info) => { const value = info.getValue(); if (!value) return "Chưa có"; const date = new Date(value); const day = String(date.getDate()).padStart(2, "0"); const month = String(date.getMonth() + 1).padStart(2, "0"); const year = date.getFullYear(); return `${day}/${month}/${year}`; }, },
+    { accessorKey: "updatedAt",header: "Cập nhật lúc",cell: (info) => new Date(info.getValue()).toLocaleDateString('en-GB')},
+    { accessorKey: "isActive",header: "Trạng thái",cell: (info) => 
+      (<span className={info.getValue() ? styles.activeStatus : styles.inactiveStatus}>
           {info.getValue() ? "✔ Hoạt động" : "❌ Không hoạt động"}
         </span>
       ),
@@ -144,10 +141,10 @@ export default function UserManagement() {
           onDelete={handleDeleteUsers}
         />
 
-  
+
         {/* Search bar */}
         <div className={styles.searchContainer}>
-        
+
           <input
             type="text"
             placeholder="Tìm kiếm người dùng.../id/tên/sđt/email..."
@@ -156,7 +153,7 @@ export default function UserManagement() {
             className={styles.searchInput}
           />
         </div>
-  
+
         {/* Table */}
         <div className={styles.tableContainer}>
           <table className={styles.excelTable}>
@@ -209,8 +206,8 @@ export default function UserManagement() {
       </div>
     </div>
   );
-  
-  
+
+
   ;
-  
+
 }

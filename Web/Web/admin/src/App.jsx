@@ -16,6 +16,8 @@ import AssignmentForm from "./components/pages/AssignmentManagement/AssignmentFo
 import AssignmentList from "./components/pages/AssignmentManagement/AssignmentList";
 import VehicleStatusManagement from "./components/pages/Vehicle/VehicleStatusManagement";
 import VehicleInfoManagement from "./components/pages/Vehicle/VehicleInfoManagement";
+import PaymentManagement from "./components/pages/Payment/PaymentManagement";
+import PaymentDashboard from "./components/pages/Payment/PaymentDashboard";
 function App() {
   const [setSelectedItem] = useState("users");
 
@@ -126,7 +128,24 @@ function App() {
                   </PrivateRoute>
                 }
               />
+              <Route
+                path="/payments"
+                element={
+                  <PrivateRoute>
+                    <PaymentManagement />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/payment-dashboard"
+                element={
+                  <PrivateRoute>
+                    <PaymentDashboard />
+                  </PrivateRoute>
+                }
+              />
             </Routes>
+
 
           </div>
         </div>

@@ -362,7 +362,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[Web.Models.Payments, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Payment, Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -374,7 +374,7 @@
   },
   {
     "ContainingType": "Web.Controllers.PaymentsController",
-    "Method": "AddPayment",
+    "Method": "CreatePayment",
     "RelativePath": "api/Payments",
     "HttpMethod": "POST",
     "IsController": true,
@@ -382,13 +382,13 @@
     "Parameters": [
       {
         "Name": "payment",
-        "Type": "Web.Models.Payments",
+        "Type": "Payment",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "Web.Models.Payments",
+        "Type": "Payment",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -414,7 +414,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Web.Models.Payments",
+        "Type": "Payment",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -439,7 +439,7 @@
       },
       {
         "Name": "payment",
-        "Type": "Web.Models.Payments",
+        "Type": "Payment",
         "IsRequired": true
       }
     ],
@@ -763,6 +763,27 @@
         "Name": "id",
         "Type": "System.Int32",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Web.Controllers.RidesController",
+    "Method": "GetPickupStats",
+    "RelativePath": "api/Rides/pickup-stats",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "month",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "year",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

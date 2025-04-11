@@ -116,5 +116,38 @@ namespace Web.Controllers
                 return StatusCode(500, $"Không thể xoá: {ex.Message}");
             }
         }
+        [HttpGet("pickup-stats")]
+        public async Task<IActionResult> GetPickupStats(int? month = null, int? year = null)
+        {
+            var now = DateTime.Now;
+            var targetMonth = month ?? now.Month;
+            var targetYear = year ?? now.Year;
+
+            var rides = await _context.Rides
+                .Where(r => r.PickupTime.HasValue &&
+                            r.PickupLocation != null &&
+                            r.PickupTime.Value.Month == targetMonth &&
+                            r.PickupTime.Value.Year == targetYear)
+                .GroupBy(r => r.PickupLocation)
+                .Select(g => new
+                {
+                    PickupLocation = g.Key,
+                    Count = g.Count()
+                })
+                .ToListAsync();
+
+            var total = rides.Sum(x => x.Count);
+            if (total == 0) return Ok(new List<object>());
+
+            var result = rides.Select(x => new
+            {
+                PickupLocation = x.PickupLocation,
+                Percentage = Math.Round((double)x.Count * 100 / total, 2)
+            });
+
+            return Ok(result);
+        }
+
+
     }
 }
