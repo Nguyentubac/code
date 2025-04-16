@@ -15,7 +15,13 @@ h2 {
     font-weight: bold;
     color: #343a40;
 }
-
+.activeSummary {
+    padding-top: 10px;
+    font-size: 16px;
+    margin-bottom: 1rem;
+    color: #28a745;
+    font-weight: bold;
+  }
 /* 🔎 Ô tìm kiếm */
 .searchInput {
     width: 100%;

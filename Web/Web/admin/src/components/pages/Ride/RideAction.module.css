@@ -35,4 +35,16 @@
     opacity: 0.6;
     cursor: not-allowed;
   }
+  .cancelBtn {
+    padding: 6px 12px;
+    background-color: #e4cdf3;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
   
+  .cancelBtn:hover {
+    background-color: #e0a800;
+  }

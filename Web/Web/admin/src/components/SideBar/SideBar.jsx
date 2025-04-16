@@ -54,6 +54,7 @@ function SideBar({ setSelectedItem }) {
     },
     { key: "Admins", label: "Quản trị" },
     { key: "Notifications", label: "Thông báo" },
+    { key: "promotions", label: "Khuyến Mãi" },
     {
       key: "rides",
       label: "Chuyến đi",

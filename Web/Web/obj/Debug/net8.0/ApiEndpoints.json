@@ -188,6 +188,27 @@
   },
   {
     "ContainingType": "Web.Controllers.DriversController",
+    "Method": "GetDriverSalary",
+    "RelativePath": "api/Drivers/{driverId}/salary",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "driverId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "salaryPeriod",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Web.Controllers.DriversController",
     "Method": "GetDriver",
     "RelativePath": "api/Drivers/{id}",
     "HttpMethod": "GET",
@@ -463,7 +484,7 @@
   },
   {
     "ContainingType": "Web.Controllers.PromotionsController",
-    "Method": "GetPromotions",
+    "Method": "GetAll",
     "RelativePath": "api/Promotions",
     "HttpMethod": "GET",
     "IsController": true,
@@ -483,33 +504,23 @@
   },
   {
     "ContainingType": "Web.Controllers.PromotionsController",
-    "Method": "AddPromotion",
+    "Method": "Create",
     "RelativePath": "api/Promotions",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "promotion",
-        "Type": "Web.Models.Promotion",
+        "Name": "dto",
+        "Type": "Web.DTOs.PromotionDto",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "Web.Models.Promotion",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "Web.Controllers.PromotionsController",
-    "Method": "GetPromotion",
+    "Method": "GetById",
     "RelativePath": "api/Promotions/{id}",
     "HttpMethod": "GET",
     "IsController": true,
@@ -535,7 +546,28 @@
   },
   {
     "ContainingType": "Web.Controllers.PromotionsController",
-    "Method": "DeletePromotion",
+    "Method": "Update",
+    "RelativePath": "api/Promotions/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "Web.DTOs.PromotionDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Web.Controllers.PromotionsController",
+    "Method": "Delete",
     "RelativePath": "api/Promotions/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,

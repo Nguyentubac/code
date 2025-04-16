@@ -1,8 +1,8 @@
 import React from "react";
-import Swal from 'sweetalert2'; // Import SweetAlert2
+import Swal from 'sweetalert2';
 import styles from "./RideAction.module.css";
 
-const RideAction = ({ onAdd, onEdit, onDelete, selectedRide }) => {
+const RideAction = ({ onAdd, onEdit, onDelete, selectedRide, onCancel }) => {
 
   const handleDelete = () => {
     Swal.fire({
@@ -19,7 +19,7 @@ const RideAction = ({ onAdd, onEdit, onDelete, selectedRide }) => {
           'Đã xóa!',
           'Chuyến đi đã được xóa.',
           'success'
-        );
+        ); s
       }
     });
   };
@@ -35,12 +35,19 @@ const RideAction = ({ onAdd, onEdit, onDelete, selectedRide }) => {
         ✏️ Sửa
       </button>
       <button
-        onClick={handleDelete} // Use SweetAlert for delete confirmation
+        onClick={handleDelete}
         disabled={!selectedRide}
         className={styles.deleteBtn}
         hidden
       >
-        🗑️ Xoá
+        🗑️ Hủy chuyến
+      </button>
+      <button
+        onClick={onCancel}
+        disabled={!selectedRide}
+        className={styles.cancelBtn}
+      >
+        🛑 Hủy chuyến
       </button>
     </div>
   );

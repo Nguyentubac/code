@@ -17,9 +17,6 @@ public class TransportDbContext : DbContext
     public DbSet<Payment> Payments { get; set; }
     public DbSet<Rating> Ratings { get; set; }
     public DbSet<Promotion> Promotions { get; set; }
-    public DbSet<DTOs.VehicleStatusDto> VehicleStatusDtos { get; set; }
-    public DbSet<DTOs.PaymentDto>  PaymentDtos{ get; set; }
-    
     public DbSet<VehicleDriver> VehicleDrivers { get; set; }
 }
 

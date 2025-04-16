@@ -11,6 +11,7 @@ import RideAction from "./RideAction";
 import styles from "./RideManagement.module.css";
 import Swal from 'sweetalert2';
 import Modal from "../../Modal/Modal";
+import RideStats from "./RideStats";
 
 export default function RideManagement() {
   const [rides, setRides] = useState([]);
@@ -40,10 +41,46 @@ export default function RideManagement() {
       console.error("Lỗi thêm chuyến đi:", error);
     }
   };
+  const handleCancelRide = async () => {
+    if (!selectedRide) return;
+    const confirm = await Swal.fire({
+      icon: 'warning',
+      title: 'Bạn có chắc muốn hủy chuyến đi này?',
+      showCancelButton: true,
+      confirmButtonText: 'Hủy chuyến',
+      cancelButtonText: 'Không',
+    });
+
+    if (confirm.isConfirmed) {
+      try {
+        await updateRide(selectedRide.id, {
+          ...selectedRide,
+          status: 2,
+          pickupTime: selectedRide.pickupTime ? new Date(selectedRide.pickupTime).toISOString() : null,
+          dropoffTime: selectedRide.dropoffTime ? new Date(selectedRide.dropoffTime).toISOString() : null,
+        });
+
+        await fetchRides();
+        Swal.fire({
+          icon: "success",
+          title: "Đã hủy chuyến thành công!",
+        });
+        setSelectedRide(null);
+      } catch (err) {
+        console.error("❌ Chi tiết lỗi khi hủy chuyến:", err);
+        Swal.fire({
+          icon: "error",
+          title: "Lỗi khi hủy chuyến",
+          text: err.response?.data?.message || JSON.stringify(err.response?.data) || "Đã xảy ra lỗi không xác định.",
+        });
+      }
+    }
+  };
+
 
   const handleDeleteRide = async () => {
     if (!selectedRide) return;
-  
+
     const confirm = await Swal.fire({
       icon: 'warning',
       title: 'Bạn có chắc muốn xoá chuyến đi này?',
@@ -51,17 +88,17 @@ export default function RideManagement() {
       confirmButtonText: 'Xóa',
       cancelButtonText: 'Hủy',
     });
-  
+
     if (confirm.isConfirmed) {
       try {
         const res = await deleteRide(selectedRide.id);
-  
+
         if (res.status === 204) {
           Swal.fire({
             icon: 'success',
             title: 'Chuyến đi đã được xóa thành công!',
           });
-  
+
           setRides((prev) => prev.filter((r) => r.id !== selectedRide.id));
           setSelectedRide(null);
         } else {
@@ -74,7 +111,7 @@ export default function RideManagement() {
         }
       } catch (error) {
         console.error("❌ Lỗi khi gọi deleteRide():", error);
-  
+
         if (error.response) {
           console.log("📦 Lỗi chi tiết từ server:", {
             status: error.response.status,
@@ -82,7 +119,7 @@ export default function RideManagement() {
             headers: error.response.headers,
           });
         }
-  
+
         Swal.fire({
           icon: 'error',
           title: 'Lỗi khi xoá chuyến đi.',
@@ -91,7 +128,7 @@ export default function RideManagement() {
       }
     }
   };
-  
+
 
   const handleSelect = (ride) => {
     setSelectedRide(ride);
@@ -105,8 +142,10 @@ export default function RideManagement() {
         onAdd={() => setShowAddForm(true)}
         onEdit={() => setShowEditForm(true)}
         onDelete={handleDeleteRide}
+        onCancel={handleCancelRide}
         selectedRide={selectedRide}
       />
+
 
       {showAddForm && (
         <Modal isOpen={showAddForm} onClose={() => setShowAddForm(false)}>
@@ -150,20 +189,26 @@ export default function RideManagement() {
               <td>{ride.passengerName}</td>
               <td>{ride.pickupLocation}</td>
               <td>{ride.dropoffLocation}</td>
-              <td>
-                {ride.status === 0
-                  ? "Chưa bắt đầu"
-                  : ride.status === 1
-                  ? "Đang chạy"
-                  : ride.status === 3
-                  ? "Hoàn thành"
-                  : "Không rõ"}
+              <td className={
+                ride.status === 0 ? styles.statusPending :
+                  ride.status === 1 ? styles.statusRunning :
+                    ride.status === 2 ? styles.statusCancelled :
+                      ride.status === 3 ? styles.statusCompleted : ""
+              }>
+                {
+                  ride.status === 0 ? "Chưa bắt đầu" :
+                    ride.status === 1 ? "Đang chạy" :
+                      ride.status === 2 ? "Đã hủy" :
+                        ride.status === 3 ? "Hoàn thành" :
+                          "Không rõ"
+                }
               </td>
               <td>{ride.pickupTime}</td>
             </tr>
           ))}
         </tbody>
       </table>
+      <RideStats/>
     </div>
   );
 }

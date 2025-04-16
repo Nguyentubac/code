@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getRides } from "../../../services/apiRide";
 import styles from "./PaymentDetailModal.module.css";
 import PaymentInvoice from "./PaymentInvoice";
+
 export default function PaymentDetailModal({ payment, onClose }) {
     const [relatedRides, setRelatedRides] = useState([]);
 
@@ -18,6 +19,12 @@ export default function PaymentDetailModal({ payment, onClose }) {
         fetchRides();
     }, [payment]);
 
+    const formatAmount = (amount) => {
+        if (amount === null || amount === undefined) {
+          return "0₫";
+        }
+        return Number(amount).toLocaleString() + "₫";
+      };
     return (
         <div className={styles.modalOverlay}>
             <div className={styles.modalBox}>
@@ -25,9 +32,9 @@ export default function PaymentDetailModal({ payment, onClose }) {
 
                 <ul className={styles.infoList}>
                     <li><strong>Phương thức:</strong> {["COD", "Momo", "VNPay"][payment.paymentMethod]}</li>
-                    <li><strong>Số tiền gốc:</strong> {payment.amount.toLocaleString()}₫</li>
-                    <li><strong>Giảm giá:</strong> {payment.discountAmount?.toLocaleString() || 0}₫</li>
-                    <li><strong>Tổng thanh toán:</strong> {payment.totalAmount?.toLocaleString()}₫</li>
+                    <li><strong>Số tiền gốc:</strong> {formatAmount(payment.amount)}₫</li>
+                    <li><strong>Giảm giá:</strong> {formatAmount(payment.discountAmount)}₫</li>
+                    <li><strong>Tổng thanh toán:</strong> {formatAmount(payment.totalAmount)}₫</li>
                     <li><strong>Trạng thái:</strong> {payment.paymentStatus === 1 ? "Đã thanh toán" : "Chưa thanh toán"}</li>
                     <li><strong>Ngày tạo:</strong> {new Date(payment.createdAt).toLocaleString()}</li>
                 </ul>
@@ -57,12 +64,11 @@ export default function PaymentDetailModal({ payment, onClose }) {
                         </tbody>
                     </table>
                 )}
+
                 <div className={styles.actions}>
-                    <PaymentInvoice payment={payment} rides={relatedRides} />
-                    <button onClick={onClose}>Đóng</button>
-                </div>
-                <div className={styles.actions}>
-                    <button onClick={onClose}>Đóng</button>
+                    {/* Truyền onClose để đóng modal */}
+                    <PaymentInvoice payment={payment} rides={relatedRides} onClose={onClose} />
+                    {/* <button onClick={onClose}>Đóng</button> */}
                 </div>
             </div>
         </div>

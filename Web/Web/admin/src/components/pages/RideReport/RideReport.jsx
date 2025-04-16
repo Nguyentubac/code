@@ -118,7 +118,9 @@ export default function RideReport() {
           })}
         </select>
       </div>
-
+      <button onClick={() => exportReportWithCharts({ chartRefs: [barChartRef, pieChartRef], data: filteredRides })}>
+          📥 Xuất Excel đầy đủ
+      </button>
       <table className={styles.table}>
         <thead>
           <tr>
@@ -162,9 +164,7 @@ export default function RideReport() {
             ))
           )}
         </tbody>
-        <button onClick={() => exportReportWithCharts({ chartRefs: [barChartRef, pieChartRef], data: filteredRides })}>
-          📥 Xuất Excel đầy đủ
-        </button>
+        
       </table>
     </div>
   );

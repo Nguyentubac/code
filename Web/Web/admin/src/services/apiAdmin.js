@@ -56,9 +56,18 @@ export const deleteAdmin = async (id) => {
 export const loginAdmin = async (credentials) => {
   try {
     const response = await api.post('/Admins/login', credentials);
-    return response.data;
+    return response.data; // ✅ { token, user } nếu thành công
   } catch (error) {
-    console.error("Lỗi đăng nhập Admin:", error.response?.data || error.message);
-    throw new Error(error.response?.data?.message || "Sai thông tin đăng nhập");
+    // Ghi log chi tiết hơn nếu cần
+    console.error("❌ Lỗi đăng nhập Admin:", error);
+
+    // Trích xuất message rõ ràng nếu có
+    const message =
+      error.response?.data?.message || 
+      error.response?.data || 
+      "Sai thông tin đăng nhập hoặc có lỗi xảy ra.";
+
+    // Gửi thông báo ra ngoài component
+    throw new Error(message);
   }
 };

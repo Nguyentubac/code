@@ -18,6 +18,7 @@ import VehicleStatusManagement from "./components/pages/Vehicle/VehicleStatusMan
 import VehicleInfoManagement from "./components/pages/Vehicle/VehicleInfoManagement";
 import PaymentManagement from "./components/pages/Payment/PaymentManagement";
 import PaymentDashboard from "./components/pages/Payment/PaymentDashboard";
+import PromotionManagement from "./components/pages/PromotionManagement/PromotionManagement";
 function App() {
   const [setSelectedItem] = useState("users");
 
@@ -36,6 +37,14 @@ function App() {
                 element={
                   <PrivateRoute>
                     <UserManagement />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/promotions"
+                element={
+                  <PrivateRoute>
+                    <PromotionManagement />
                   </PrivateRoute>
                 }
               />

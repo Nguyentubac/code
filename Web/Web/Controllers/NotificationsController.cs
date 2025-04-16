@@ -59,7 +59,7 @@ namespace Web.Controllers
 
             var existing = await _context.Notifications.FindAsync(id);
             if (existing == null) return NotFound();
-
+            notification.CreatedAt = DateTime.Now;
             _context.Entry(existing).CurrentValues.SetValues(notification);
 
             try

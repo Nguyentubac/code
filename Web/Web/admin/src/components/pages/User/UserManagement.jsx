@@ -8,7 +8,8 @@ export default function UserManagement() {
   const [users, setUsers] = useState([]);
   const [error, setError] = useState("");
   const [globalFilter, setGlobalFilter] = useState("");
-  const [selectedUsers, setSelectedUsers] = useState([]); // Lưu danh sách user được chọn
+  const [selectedUsers, setSelectedUsers] = useState([]); // save danh sách user được chọn
+  const activeUsersCount = users.filter(user => user.isActive).length; // đếm sl người dùng đang hđ
   useEffect(() => {
     fetchUsers();
   }, []);
@@ -108,11 +109,12 @@ export default function UserManagement() {
     { accessorKey: "phoneNumber", header: "Số điện thoại" },
     { accessorKey: "address", header: "Địa chỉ" },
     { accessorKey: "createdAt", header: "Ngày tạo", cell: (info) => { const value = info.getValue(); if (!value) return "Chưa có"; const date = new Date(value); const day = String(date.getDate()).padStart(2, "0"); const month = String(date.getMonth() + 1).padStart(2, "0"); const year = date.getFullYear(); return `${day}/${month}/${year}`; }, },
-    { accessorKey: "updatedAt",header: "Cập nhật lúc",cell: (info) => new Date(info.getValue()).toLocaleDateString('en-GB')},
-    { accessorKey: "isActive",header: "Trạng thái",cell: (info) => 
+    { accessorKey: "updatedAt", header: "Cập nhật lúc", cell: (info) => new Date(info.getValue()).toLocaleDateString('en-GB') },
+    {
+      accessorKey: "isActive", header: "Trạng thái", cell: (info) =>
       (<span className={info.getValue() ? styles.activeStatus : styles.inactiveStatus}>
-          {info.getValue() ? "✔ Hoạt động" : "❌ Không hoạt động"}
-        </span>
+        {info.getValue() ? "✔ Hoạt động" : "❌ Không hoạt động"}
+      </span>
       ),
     },
   ];
@@ -141,7 +143,9 @@ export default function UserManagement() {
           onDelete={handleDeleteUsers}
         />
 
-
+<div className={styles.activeSummary}>
+  👤 Số người dùng đang hoạt động: {users.filter(user => user.isActive).length}
+</div>
         {/* Search bar */}
         <div className={styles.searchContainer}>
 

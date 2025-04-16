@@ -12,9 +12,8 @@ public class Driver
     [Required, StringLength(50)]
     public string VehicleType { get; set; }
 
-
     [Range(0, double.MaxValue)]
-    public decimal? Earnings { get; set; } // nullable decimal(10,2)
+    public decimal? Earnings { get; set; }
 
     public DateTime CreatedAt { get; set; } = DateTime.Now;
 

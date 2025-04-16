@@ -46,10 +46,9 @@ namespace Web.Controllers
                     r.PickupLocation,
                     r.DropoffLocation,
                     r.Status,
-
-                    PickupTime = r.PickupTime.HasValue ? r.PickupTime.Value.ToString("yyyy-MM-dd HH:mm") : null,
-                    DropoffTime = r.DropoffTime.HasValue ? r.DropoffTime.Value.ToString("yyyy-MM-dd HH:mm") : null,
-                    CreatedAt = r.CreatedAt.HasValue ? r.CreatedAt.Value.ToString("yyyy-MM-dd HH:mm") : null
+                    PickupTime = r.PickupTime.ToString("dd-MM-yyyy HH:mm") ?? "Chưa có",
+                    DropoffTime = r.DropoffTime?.ToString("dd-MM-yyyy HH:mm") ?? "Chưa có",
+                    CreatedAt = r.CreatedAt?.ToString("dd-MM-yyyy HH:mm") ?? "Chưa có"
                 });
 
                 return Ok(result);
@@ -124,17 +123,16 @@ namespace Web.Controllers
             var targetYear = year ?? now.Year;
 
             var rides = await _context.Rides
-                .Where(r => r.PickupTime.HasValue &&
-                            r.PickupLocation != null &&
-                            r.PickupTime.Value.Month == targetMonth &&
-                            r.PickupTime.Value.Year == targetYear)
-                .GroupBy(r => r.PickupLocation)
-                .Select(g => new
-                {
-                    PickupLocation = g.Key,
-                    Count = g.Count()
-                })
-                .ToListAsync();
+            .Where(r => r.PickupLocation != null &&
+                        r.PickupTime.Month == targetMonth &&
+                        r.PickupTime.Year == targetYear)
+            .GroupBy(r => r.PickupLocation)
+            .Select(g => new
+            {
+                PickupLocation = g.Key,
+                Count = g.Count()
+            })
+            .ToListAsync();
 
             var total = rides.Sum(x => x.Count);
             if (total == 0) return Ok(new List<object>());

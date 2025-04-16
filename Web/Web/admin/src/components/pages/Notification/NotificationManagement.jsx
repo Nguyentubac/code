@@ -4,7 +4,7 @@ import { getNotifications } from "../../../services/apiNotification";
 import Modal from "../../Modal/Modal";
 import AddNotificationForm from "./AddNotificationForm";
 import EditNotificationForm from "./EditNotificationForm";
-import Swal from 'sweetalert2'; // Import SweetAlert2
+import Swal from 'sweetalert2';
 
 export default function NotificationManagement() {
   const [notifications, setNotifications] = useState([]);
@@ -47,20 +47,17 @@ export default function NotificationManagement() {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          // Logic xóa thông báo
-          // await deleteNotification(id);
-          fetchNotifications(); // Lấy lại danh sách sau khi xóa
+          // await deleteNotification(id); // thực hiện xóa
+          fetchNotifications();
           Swal.fire({
             icon: 'success',
-            title: 'Thông báo đã được xóa thành công!',
-            showConfirmButton: true
+            title: 'Đã xóa thành công!',
           });
         } catch (error) {
-          console.error("Lỗi xóa thông báo:", error);
+          console.error("Lỗi xóa:", error);
           Swal.fire({
             icon: 'error',
             title: 'Không thể xóa thông báo.',
-            showConfirmButton: true
           });
         }
       }
@@ -69,7 +66,7 @@ export default function NotificationManagement() {
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>Quản lý Thông báo</h2>
+      <h2 className={styles.title}>📢 Quản lý Thông báo</h2>
 
       <div className={styles.actions}>
         <button className={styles.addBtn} onClick={() => setIsAddOpen(true)}>+ Thêm</button>
@@ -116,39 +113,61 @@ export default function NotificationManagement() {
             </tr>
           </thead>
           <tbody>
-            {filtered.map((n) => (
-              <tr key={n.id}>
-                <td>{n.id}</td>
-                <td>{n.userId ?? "-"}</td>
-                <td>{n.title}</td>
-                <td>{n.message}</td>
-                <td>{n.type}</td>
-                <td>
-                  {n.type === 2 ? "Khuyến mãi" :
-                    n.type === 3 ? "Nhắc nhở" :
-                      n.type === 1 ? "Hệ Thống" :
-                        "Không xác định"}
-                </td>
-                <td>{n.senderIsAdmin ? "✔" : "✖"}</td>
-                <td>{formatDate(n.createdAt)}</td>
-                <td>
-                  <button onClick={() => { setSelected(n); setIsEditOpen(true); }}>Sửa</button>
-                  <button onClick={() => handleDelete(n.id)}>Xóa</button>
-                </td>
+            {filtered.length > 0 ? (
+              filtered.map((n) => (
+                <tr key={n.id}>
+                  <td>{n.id}</td>
+                  <td>{n.userId ?? "-"}</td>
+                  <td>{n.title}</td>
+                  <td>{n.message}</td>
+                  <td>
+                    {n.type === 1
+                      ? "Hệ thống"
+                      : n.type === 2
+                        ? "Khuyến mãi"
+                        : n.type === 3
+                          ? "Nhắc nhở"
+                          : "Không xác định"}
+                  </td>
+                  <td>{n.status === 1 ? "Đã đọc" : "Chưa đọc"}</td>
+                  <td>{n.senderIsAdmin ? "✔" : "✖"}</td>
+                  <td>{formatDate(n.createdAt)}</td>
+                  <td>
+                    <button className={styles.editBtn} onClick={() => { setSelected(n); setIsEditOpen(true); }}>
+                      ✏️ Sửa
+                    </button>
+                    <button className={styles.deleteBtn} onClick={() => handleDelete(n.id)}>
+                      🗑️ Xoá
+                    </button>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="9" className={styles.error}>Không tìm thấy thông báo nào.</td>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
       </div>
 
       <Modal isOpen={isAddOpen} onClose={() => setIsAddOpen(false)}>
-        <AddNotificationForm closeModal={() => setIsAddOpen(false)} refreshNotifications={fetchNotifications} />
+        <AddNotificationForm
+          closeModal={() => setIsAddOpen(false)}
+          refreshNotifications={fetchNotifications}
+        />
       </Modal>
 
       <Modal isOpen={isEditOpen} onClose={() => setIsEditOpen(false)}>
         {selected ? (
-          <EditNotificationForm notification={selected} closeModal={() => setIsEditOpen(false)} refreshNotifications={fetchNotifications} />
-        ) : <p>Không tìm thấy thông báo để sửa</p>}
+          <EditNotificationForm
+            notification={selected}
+            closeModal={() => setIsEditOpen(false)}
+            refreshNotifications={fetchNotifications}
+          />
+        ) : (
+          <p>Không tìm thấy thông báo để sửa</p>
+        )}
       </Modal>
     </div>
   );
